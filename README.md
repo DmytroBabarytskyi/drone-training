@@ -1,147 +1,190 @@
 # drone-training
 
-Симулятор-тренажер для FPV та великих БПЛА у стилі **Liftoff**, з можливістю
-підключення ML-моделей для автономного виявлення й ураження навчальних цілей
-у **віртуальному середовищі**.
+A UAV flight simulator and research sandbox for FPV and large multirotor
+aircraft, with a machine learning pipeline for target detection and autonomous
+engagement **inside the simulation**.
 
-> ⚠️ **Область застосування.** Це навчальний **симулятор/гра**. Усі «цілі» —
-> віртуальні об'єкти всередині симуляції (як у будь-якому авіасимуляторі чи
-> відеогрі). Проєкт призначений для тренування пілотування, розробки ігрових
-> механік і досліджень computer vision / reinforcement learning у пісочниці.
-> Він не працює з реальним апаратним забезпеченням озброєння і не призначений
-> для наведення в реальному світі.
+Built from scratch on Panda3D and the Bullet physics engine. A human pilot and
+a trained agent drive the aircraft through the same interface, so an autonomous
+policy is simply another implementation of `ControlSource`.
 
-## Що вміє (цільовий стан)
+> **Scope.** This is a training simulator and game. Every "target" is a virtual
+> object inside the simulation, in the same sense as in any flight simulator or
+> video game. The project does not interface with physical hardware and is not
+> intended for real-world guidance. It exists to study flight control, computer
+> vision and reinforcement learning in a sandbox.
 
-1. **FPV-політ** у режимі Acro/Rate (як у Liftoff) з керуванням з клавіатури
-   або геймпада PlayStation (DualShock 4 / DualSense).
-2. **Політ на великих БПЛА** — мультиротор із режимами утримання висоти/позиції
-   (Angle / GPS-hold) та опційно fixed-wing модель.
-3. **ML-режим** — навчені моделі виявляють навчальні цілі (детекція) і
-   автономно наводяться на них (керування/RL) у симуляції.
-4. **Графіка** — процедурні 3D-моделі сценерії (дерева, трава, паркан, окопи,
-   дороги) і цілей (техніка/артилерія) замість коробок; ураження цілей у
-   `strike_range` тригерить ефект знищення (спалах, дим, реальні фізичні
-   уламки, звук). PBR-матеріали (roughness/metallic), альфа-вирізана трава,
-   god rays-пост-процес; техніка/артилерія — деталізовані Blender-моделі
-   (`assets/blender/`, з процедурним fallback, якщо ассети не згенеровані).
-5. **Реалізм фізики** — інерція моторів, просідання батареї, екранний ефект,
-   анізотропний квадратичний опір, airmode, feed-forward у PID, турбулентний
-   вітер — усі опційні через `configs/vehicles/*.yaml` (докладніше
-   `docs/DECISIONS.md`).
+---
 
-## Швидкий старт
+## What it does
+
+**Flight.** Acro/Rate mode with the handling of a 5-inch FPV quad, plus a heavy
+multirotor with Angle, altitude-hold and position-hold modes. Keyboard or
+PlayStation gamepad (DualShock 4 / DualSense) input, with configurable deadzone,
+expo and axis inversion.
+
+**Physics.** Motor inertia and spin-up lag, battery sag under load, ground
+effect, anisotropic quadratic drag, airmode, feed-forward PID terms and
+deterministic turbulent wind. Each effect is individually switchable through
+`configs/vehicles/*.yaml`, so the model can be reduced to a simpler one for
+reproducible experiments.
+
+**Scenarios.** Three mission types — `gate_race` (fly a circuit through oriented
+gates), `patrol` (spot targets appearing on a schedule) and `strike_range`
+(approach and engage stationary targets) — each with several difficulty levels
+and seeded, reproducible layouts.
+
+**Computer vision.** Synthetic dataset generation directly from the simulator
+(frame plus projected bounding boxes), YOLO training and inference, and a
+detection overlay on the FPV feed.
+
+**Reinforcement learning.** A Gymnasium-compliant environment and a PPO agent
+trained to approach and engage a target autonomously, driving the aircraft
+through the same control path a human pilot uses.
+
+**Tooling.** A GUI launcher for flight, autonomous runs, input calibration and
+checkpoint management; a headless evaluation harness; and 61 test modules
+covering physics, controllers, scenarios and both ML pipelines.
+
+### One deliberate limitation, stated up front
+
+The autonomous agent currently receives the target's relative position **from
+the simulation directly**, not from the detector. YOLO runs in parallel and
+displays its bounding boxes as a picture-in-picture overlay, but detection does
+not yet drive flight. Closing that loop — feeding noisy, intermittent detections
+into the policy instead of ground truth — is the next substantial piece of work.
+The compromise is recorded in [`docs/DECISIONS.md`](docs/DECISIONS.md).
+
+---
+
+## Autonomous mode: measured results
+
+The policy was trained on a single task — approach one nearly stationary target
+— then evaluated unchanged on all three scenarios, 20 seeded episodes each,
+headless. Raw data: [`docs/phase7_autonomous_eval.json`](docs/phase7_autonomous_eval.json).
+
+| Scenario | Result | Mean score | Mean time |
+|---|---|---|---|
+| `strike_range` | 16/20 episodes engaged **all 4** targets | 3.70 / 4 | 51.8 s |
+| `patrol` | Spotted 2 of 3 targets in most episodes, never all 3 | 1.80 / 3 | 60.0 s (full limit) |
+| `gate_race` | **0/20** completed 3 laps; 4/20 completed exactly 1 lap | 0.25 laps | 90.0 s (full limit) |
+
+The `gate_race` result is the interesting one, and it is not an integration bug.
+Unit tests confirm the gate centre is passed to the agent correctly. The policy
+simply never encountered the concept of *flying through* an oriented opening
+during training — only *approaching a point in space* — so it clears gates only
+when its approach heading happens to align. This is a known limit of the current
+observation strategy, and it defines the next step: training on trajectory-shaped
+objectives rather than point targets.
+
+Full analysis, including a methodological note on why the first evaluation run
+produced byte-identical results across all seeds, is in
+[`docs/phase7_autonomous_eval.md`](docs/phase7_autonomous_eval.md).
+
+---
+
+## Architecture
+
+Everything runs on a fixed-step simulation loop (1/240 s for physics, lower
+rates for render and control):
+
+```
+ input ──▶ ControlSource ──▶ FlightController ──▶ Vehicle ──▶ Physics
+(keyboard/                  (Acro / Angle /      (motors,     (Bullet via
+ gamepad/                    AltHold / PosHold)   mass, thrust) Panda3D)
+ RL agent)                                                          │
+                                                                    ▼
+ HUD / Render ◀── Renderer ◀── FPV Camera ◀──────────────── World state
+                                    │
+                                    ▼
+                            ML: Detection / RL
+```
+
+The governing rule is that a human and an agent are interchangeable: both emit
+the same `ControlCommand` vector. The data contracts (`ControlCommand`,
+`VehicleState`, `CameraFrame`, `Detection`) live in `core/contracts.py` and are
+the only coupling between packages.
+
+| Package | Responsibility |
+|---|---|
+| `core/` | Simulation loop, clock, configuration, data contracts |
+| `physics/` | Bullet world, aerodynamics, wind |
+| `vehicles/` | Aircraft models and flight-mode controllers |
+| `input/` | Keyboard, gamepad and RL-agent control sources |
+| `render/` | Panda3D scene, PBR materials, FPV camera, HUD, effects |
+| `world/`, `scenarios/` | Scene composition, missions, scoring |
+| `ml/data`, `ml/detection`, `ml/rl` | Dataset generation, YOLO, PPO environment |
+| `gui/` | Launcher application |
+
+Design notes: [`ARCHITECTURE.md`](ARCHITECTURE.md).
+Phase-by-phase development history with acceptance criteria: [`ROADMAP.md`](ROADMAP.md).
+Decision log: [`docs/DECISIONS.md`](docs/DECISIONS.md).
+Terminology: [`docs/GLOSSARY.md`](docs/GLOSSARY.md).
+
+---
+
+## Getting started
 
 ```bash
 python -m venv .venv
-# Windows PowerShell:
-.venv\Scripts\Activate.ps1
+.venv\Scripts\Activate.ps1        # Windows PowerShell
 pip install -e ".[dev]"
-
-# Ручний політ FPV з клавіатури:
-python -m dronesim.app fly --vehicle fpv_5inch --input keyboard
-
-# З геймпадом PlayStation:
-python -m dronesim.app fly --vehicle fpv_5inch --input gamepad
-
-# Конкретний рівень сценарію (доп. фаза розмаїття контенту — десятки трас/розкладок):
-python -m dronesim.app fly --scenario gate_race --level circuit8
-
-# Автономний режим (після навчання RL-агента, python -m dronesim.ml.rl.train --config ml/ppo_strike):
-python -m dronesim.app autonomous --scenario strike_range
-# або зручна обгортка з дефолтами й підказками:
-python scripts/demo_autonomous.py --scenario strike_range
 ```
 
-### Перегенерація 3D-моделей (Blender-пайплайн)
-
-Ассети (`assets/models/*.bam`) уже згенеровані й закомічені — це потрібно
-ЛИШЕ якщо редагуєш `assets/blender/build_*.py`:
+Manual flight:
 
 ```bash
-pip install -e ".[assets]"     # дає CLI-утиліту gltf2bam
-# 1. Виконати build_vehicle.py/build_artillery.py ВСЕРЕДИНІ Blender (MCP
-#    або Script Editor) — це bpy-код, не Python-скрипт цього venv.
-# 2. Конвертувати експортований .glb у .bam:
-gltf2bam assets/models/vehicle.glb assets/models/vehicle.bam
+python -m dronesim.app fly --vehicle fpv_5inch --input keyboard
+python -m dronesim.app fly --vehicle fpv_5inch --input gamepad
+python -m dronesim.app fly --scenario gate_race --level circuit8
 ```
 
-Без цих файлів гра просто падає на процедурні коробки+циліндри (fallback,
-`render/models.py`) — нічого не ламається.
+Autonomous mode, using a trained checkpoint:
 
-### GUI-лаунчер (замість термінала)
+```bash
+python -m dronesim.ml.rl.train --config ml/ppo_strike    # train
+python -m dronesim.app autonomous --scenario strike_range
+```
+
+GUI launcher, instead of the terminal:
 
 ```bash
 pip install -e ".[gui]"
-python -m dronesim.gui.launcher
-# або двічі клікнути run_gui.bat (Windows)
+python -m dronesim.gui.launcher      # or run_gui.bat on Windows
 ```
 
-Вікно з вкладками **Політ** (апарат/ввід/сценарій+рівень/seed/вітер),
-**Автономний** (вибір навченого чекпойнта, сценарій+рівень),
-**Калібрування** (deadzone/expo для клавіатури/геймпада) і **Моделі**
-(перелік навчених RL-чекпойнтів і ваг YOLO на диску). Кнопка "Запустити"
-відкриває справжнє вікно польоту окремим процесом (GUI лишається
-відповідним, можна запускати кілька сесій).
+Tests and linting:
 
-### Керування під час польоту
+```bash
+pytest -q
+ruff check
+```
 
-| Клавіша | Дія |
-|---|---|
-| `W/A/S/D`, `Q/E` | Тангаж/крен/рискання |
-| `Shift`/`Control` | Газ вгору/вниз — **не самоцентрується** (як реальний важіль газу): тримає останнє значення, поки не натиснуто протилежну клавішу |
-| `Space` | Arm/disarm |
-| `Tab` | Перемкнути режим польоту (Acro → Angle → Alt-hold → Pos-hold) — старт у **Angle** (самовирівнюється), якщо апарат підтримує |
-| `c` | Перемкнути камеру **FPV ↔ третя особа (chase-cam)** |
-| `r` | Негайний ручний рестарт (скидає апарат до точки старту) |
-| `p` | Перемкнути **Manual ↔ Autonomous** (лише якщо задано `--autopilot`/у команді `autonomous`) — перемикання миттєве, керування одразу переходить до людини або назад до агента |
-| `Esc` | Вихід |
+### 3D assets
 
-HUD показує швидкість (горизонтальну/вертикальну), висоту, режим і легенду
-керування (доки апарат не armed). Межі безпеки (`configs/safety.yaml`) —
-попередження при наближенні до стелі/меж поля, авто-рестарт після короткої
-паузи, якщо апарат перевернувся чи вийшов за тверду межу.
+Generated models in `assets/models/*.bam` are committed. Regeneration is only
+needed when editing `assets/blender/build_*.py`; those scripts run inside
+Blender, and `gltf2bam` converts the exported `.glb`. If the assets are missing,
+rendering falls back to procedural primitives and nothing breaks.
 
-`fpv_5inch` в Acro-режимі летить за РЕАЛЬНОЮ формулою BetaFlight "Actual
-Rates" (`configs/vehicles/fpv_5inch.yaml::rate_profile`,
-`vehicles/controllers/rates.py`) — не спрощений `stick*max_rate`, підібрана
-на "помірний" (не гоночний) пресет — комфортніше для клавіатури/новачків.
-Не подобається "різкість" польоту — підлаштуй сам у GUI, вкладка
-**Калібрування** (rate-профіль per-вісь: center/max/expo), без ручного
-редагування YAML.
+---
 
-У режимі `autonomous` політ стартує одразу під керуванням навченого RL-агента
-(`--vehicle quad_large --scenario strike_range` за замовчуванням); клавіша `p`
-у будь-який момент передає керування людині й назад. Команда `fly --autopilot
-<checkpoint>` стартує, навпаки, у **MANUAL** — автопілот лише доступний, поки
-не натиснути `p`.
+## Technology
 
-> **Обмеження поточної інтеграції:** навчена політика бачить точну (не
-> зашумлену детекціями YOLO) відносну позицію цілі із симуляції — детектор
-> паралельно працює й показує PIP-оверлей із bbox, але на політ це поки не
-> впливає. Це свідомий, задокументований компроміс (`docs/DECISIONS.md`), не
-> недогляд.
+Python 3.11 throughout, so there is no bridge between the engine and the ML
+code. Panda3D provides both rendering and, through `panda3d.bullet`, physics;
+`panda3d-simplepbr` handles PBR lighting. Reinforcement learning uses Gymnasium
+with Stable-Baselines3, detection uses Ultralytics YOLO, gamepad input goes
+through pygame/SDL, configuration through OmegaConf, and tests through pytest.
 
-## Документи, з яких треба почати
+---
 
-| Файл | Навіщо |
-|------|--------|
-| [ROADMAP.md](ROADMAP.md) | Покроковий план за фазами з критеріями приймання |
-| [ARCHITECTURE.md](ARCHITECTURE.md) | Модулі, потоки даних, межі відповідальності |
-| [docs/GLOSSARY.md](docs/GLOSSARY.md) | Терміни FPV/БПЛА/ML українською та англійською |
-| [docs/DECISIONS.md](docs/DECISIONS.md) | Журнал технічних рішень (ADR) |
-| `.claude/skills/drone-training/SKILL.md` | Скіл-навігатор для AI-моделей-виконавців |
+## Status
 
-## Технологічний стек
+Phases 0 through 7 are complete: scaffolding, physics, manual flight, large-UAV
+flight modes, missions and scoring, computer vision, reinforcement learning, and
+autonomous-mode integration. Fixed-wing aircraft remain unimplemented and are
+marked optional.
 
-- **Мова:** Python 3.11 (весь проєкт однією мовою — без мостів між рушієм і ML)
-- **3D-рушій + рендер:** **Panda3D** (справжній ігровий движок, ставиться через `pip`,
-  без окремої інсталяції як Unity/Unreal) + `panda3d-simplepbr` для PBR-освітлення
-- **Фізика:** Bullet, вбудований у Panda3D (`panda3d.bullet`) — рушій і фізика в одному пакеті
-- **RL-інтерфейс:** Gymnasium + Stable-Baselines3
-- **Детекція:** Ultralytics YOLO (v8/v11)
-- **Введення:** геймпад PlayStation через pygame/SDL; клавіатура — засобами Panda3D
-- **Конфіги:** OmegaConf (YAML)
-- **Тести:** pytest
-
-Детальніше — у [ARCHITECTURE.md](ARCHITECTURE.md).
+Training artifacts (`runs/`, `datasets/`, model weights) are excluded from
+version control and must be regenerated or restored separately.
