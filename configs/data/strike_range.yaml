@@ -1,0 +1,13 @@
+# Параметри збору датасету навколо цілей сценарію strike_range (фаза 5).
+scenario: strike_range
+output_dir: datasets/strike_range
+class_names: [target]
+viewpoints_per_target: 150   # к-сть ракурсів на КОЖНУ ціль сценарію
+radius_range: [4.0, 14.0]    # м, горизонтальна дистанція до цілі
+altitude_range: [-2.0, 3.0]  # м, зсув висоти відносно цілі
+target_half_extent: 0.6      # м, "розмір" цілі для проєкції bbox (узгоджено з маркером)
+val_fraction: 0.2
+image_width: 320
+image_height: 240
+fov_deg: 100.0
+seed: 0

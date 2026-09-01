@@ -1,0 +1,778 @@
+{
+  "checkpoint": "runs/rl/ppo_strike/model.zip",
+  "episodes_per_scenario": 20,
+  "scenarios": {
+    "strike_range": {
+      "completion_rate": 0.8,
+      "mean_score": 3.7,
+      "mean_time_s": 51.7725,
+      "episodes": [
+        {
+          "scenario": "strike_range",
+          "seed": 2000,
+          "done": true,
+          "score": 4.0,
+          "time_s": 26.7,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2001,
+          "done": true,
+          "score": 4.0,
+          "time_s": 27.8,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2002,
+          "done": true,
+          "score": 4.0,
+          "time_s": 33.8,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2003,
+          "done": true,
+          "score": 4.0,
+          "time_s": 24.4,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2004,
+          "done": false,
+          "score": 3.0,
+          "time_s": 120.0,
+          "info": {
+            "hits": 3,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2005,
+          "done": false,
+          "score": 3.0,
+          "time_s": 120.0,
+          "info": {
+            "hits": 3,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2006,
+          "done": true,
+          "score": 4.0,
+          "time_s": 67.8,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2007,
+          "done": true,
+          "score": 4.0,
+          "time_s": 60.85,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2008,
+          "done": false,
+          "score": 2.0,
+          "time_s": 120.0,
+          "info": {
+            "hits": 2,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2009,
+          "done": true,
+          "score": 4.0,
+          "time_s": 24.5,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2010,
+          "done": true,
+          "score": 4.0,
+          "time_s": 24.15,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2011,
+          "done": true,
+          "score": 4.0,
+          "time_s": 38.15,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2012,
+          "done": true,
+          "score": 4.0,
+          "time_s": 31.55,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2013,
+          "done": true,
+          "score": 4.0,
+          "time_s": 29.45,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2014,
+          "done": false,
+          "score": 2.0,
+          "time_s": 120.0,
+          "info": {
+            "hits": 2,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2015,
+          "done": true,
+          "score": 4.0,
+          "time_s": 30.349999999999998,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2016,
+          "done": true,
+          "score": 4.0,
+          "time_s": 27.3,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2017,
+          "done": true,
+          "score": 4.0,
+          "time_s": 54.35,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2018,
+          "done": true,
+          "score": 4.0,
+          "time_s": 30.599999999999998,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        },
+        {
+          "scenario": "strike_range",
+          "seed": 2019,
+          "done": true,
+          "score": 4.0,
+          "time_s": 23.7,
+          "info": {
+            "hits": 4,
+            "total": 4,
+            "timed_out": false
+          }
+        }
+      ]
+    },
+    "patrol": {
+      "completion_rate": 1.0,
+      "mean_score": 1.8,
+      "mean_time_s": 60.0,
+      "episodes": [
+        {
+          "scenario": "patrol",
+          "seed": 2000,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2001,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2002,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2003,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2004,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2005,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2006,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2007,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2008,
+          "done": true,
+          "score": 1.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 1,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2009,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2010,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2011,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2012,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2013,
+          "done": true,
+          "score": 1.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 1,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2014,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2015,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2016,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2017,
+          "done": true,
+          "score": 1.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 1,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2018,
+          "done": true,
+          "score": 1.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 1,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        },
+        {
+          "scenario": "patrol",
+          "seed": 2019,
+          "done": true,
+          "score": 2.0,
+          "time_s": 60.0,
+          "info": {
+            "observed": 2,
+            "spawned": 3,
+            "total": 3,
+            "timed_out": true
+          }
+        }
+      ]
+    },
+    "gate_race": {
+      "completion_rate": 0.0,
+      "mean_score": 0.25,
+      "mean_time_s": 90.0,
+      "episodes": [
+        {
+          "scenario": "gate_race",
+          "seed": 2000,
+          "done": false,
+          "score": 0.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 0,
+            "next_gate": 2,
+            "lap_times": []
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2001,
+          "done": false,
+          "score": 0.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 0,
+            "next_gate": 3,
+            "lap_times": []
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2002,
+          "done": false,
+          "score": 0.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 0,
+            "next_gate": 2,
+            "lap_times": []
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2003,
+          "done": false,
+          "score": 0.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 0,
+            "next_gate": 2,
+            "lap_times": []
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2004,
+          "done": false,
+          "score": 1.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 1,
+            "next_gate": 2,
+            "lap_times": [
+              59.450000000020346
+            ]
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2005,
+          "done": false,
+          "score": 1.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 1,
+            "next_gate": 2,
+            "lap_times": [
+              52.800000000015054
+            ]
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2006,
+          "done": false,
+          "score": 0.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 0,
+            "next_gate": 1,
+            "lap_times": []
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2007,
+          "done": false,
+          "score": 0.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 0,
+            "next_gate": 1,
+            "lap_times": []
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2008,
+          "done": false,
+          "score": 0.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 0,
+            "next_gate": 2,
+            "lap_times": []
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2009,
+          "done": false,
+          "score": 0.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 0,
+            "next_gate": 1,
+            "lap_times": []
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2010,
+          "done": false,
+          "score": 1.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 1,
+            "next_gate": 2,
+            "lap_times": [
+              46.15000000000976
+            ]
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2011,
+          "done": false,
+          "score": 0.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 0,
+            "next_gate": 1,
+            "lap_times": []
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2012,
+          "done": false,
+          "score": 0.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 0,
+            "next_gate": 2,
+            "lap_times": []
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2013,
+          "done": false,
+          "score": 0.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 0,
+            "next_gate": 1,
+            "lap_times": []
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2014,
+          "done": false,
+          "score": 0.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 0,
+            "next_gate": 3,
+            "lap_times": []
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2015,
+          "done": false,
+          "score": 0.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 0,
+            "next_gate": 2,
+            "lap_times": []
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2016,
+          "done": false,
+          "score": 0.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 0,
+            "next_gate": 2,
+            "lap_times": []
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2017,
+          "done": false,
+          "score": 0.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 0,
+            "next_gate": 3,
+            "lap_times": []
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2018,
+          "done": false,
+          "score": 1.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 1,
+            "next_gate": 1,
+            "lap_times": [
+              56.950000000018356
+            ]
+          }
+        },
+        {
+          "scenario": "gate_race",
+          "seed": 2019,
+          "done": false,
+          "score": 1.0,
+          "time_s": 90.0,
+          "info": {
+            "laps": 1,
+            "next_gate": 1,
+            "lap_times": [
+              49.65000000001255
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "wall_time_s": 702.5073273181915
+}

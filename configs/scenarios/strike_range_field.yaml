@@ -1,0 +1,9 @@
+# ЗГЕНЕРОВАНО scripts/generate_map_field.py — НЕ редагуй вручну.
+# Рівень "field" (Карта 1 "Поле"): цілі в/біля траншей (узгоджено зі сценою).
+max_aim_angle_deg: 20.0
+time_limit_s: 150.0
+targets:
+  - { pos: [18.0, 3.5, 2.0], radius: 2.5, kind: vehicle }
+  - { pos: [24.0, -7.5, 2.0], radius: 2.5, kind: artillery }
+  - { pos: [11.0, 10.5, 2.0], radius: 2.5, kind: vehicle }
+  - { pos: [30.0, 8.0, 2.0], radius: 2.5, kind: vehicle, moves_to: [36.0, 14.0, 2.0], period_s: 12.0 }

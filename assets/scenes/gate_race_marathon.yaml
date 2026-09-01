@@ -1,0 +1,6 @@
+# Декоративна сцена для рівня "gate_race_marathon" (доп. фаза розмаїття контенту).
+# Цілі/ворота — у відповідному configs/scenarios/gate_race_marathon.yaml.
+ground_z: 0.0
+obstacles:
+  - { pos: [30.0, 30.0, 1.0], half_extents: [1.5,1.5,1.5] }
+  - { pos: [-30.0, -30.0, 1.0], half_extents: [1.5,1.5,1.5] }

@@ -1,0 +1,6 @@
+# Декоративна сцена для рівня "gate_race_circuit6" (доп. фаза розмаїття контенту).
+# Цілі/ворота — у відповідному configs/scenarios/gate_race_circuit6.yaml.
+ground_z: 0.0
+obstacles:
+  - { pos: [15.0, 15.0, 1.0], half_extents: [1.0,1.0,1.0] }
+  - { pos: [-15.0, -15.0, 1.0], half_extents: [1.0,1.0,1.0] }

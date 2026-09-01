@@ -1,0 +1,12 @@
+# Межі безпеки інтерактивного польоту (доп. фаза поліш, не ROADMAP-фаза).
+# Відрізняється від ml/rl_strike.yaml::reward (crash/out_of_bounds ВІДНОСНО
+# ЦІЛІ, для навчання) — тут пороги ВІДНОСНО spawn-точки/вертикалі, для
+# людини-пілота. Двоступенева система: soft = попередження в HUD,
+# hard = критично (веде до авто-рестарту після crash_grace_period_s).
+soft_ceiling_m: 40.0
+hard_ceiling_m: 80.0
+bounds_radius_soft_m: 60.0
+bounds_radius_hard_m: 120.0
+crash_tilt_deg: 70.0        # нахил від вертикалі (roll/pitch) -> "перевернувся"
+crash_grace_period_s: 3.0   # скільки критичний стан має тривати до авто-рестарту
+restart_key: r              # клавіша негайного ручного рестарту

@@ -1,0 +1,12 @@
+# Навчання PPO (Stable-Baselines3) на DroneEnv (фаза 6).
+env_config: ml/rl_strike
+learning_rate: 0.0003
+n_steps: 1024
+batch_size: 64
+gamma: 0.99
+seed: 0
+total_timesteps: 100000     # CPU-масштаб proof-of-pipeline; повна збіжність потребує більше (docs/DECISIONS.md)
+checkpoint_path: runs/rl/ppo_strike/model.zip
+log_dir: runs/rl/ppo_strike/tb
+policy:
+  net_arch: [64, 64]

@@ -1,0 +1,7 @@
+# Декоративна сцена для рівня "gate_race_technical" (доп. фаза розмаїття контенту).
+# Цілі/ворота — у відповідному configs/scenarios/gate_race_technical.yaml.
+ground_z: 0.0
+obstacles:
+  - { pos: [13.0, 13.0, 1.0], half_extents: [1.0,1.0,1.0] }
+  - { pos: [-13.0, 13.0, 1.0], half_extents: [1.0,1.0,1.0] }
+  - { pos: [13.0, -13.0, 1.0], half_extents: [1.0,1.0,1.0] }

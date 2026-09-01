@@ -1,0 +1,4 @@
+# Декоративна сцена для рівня "patrol_long" (доп. фаза розмаїття контенту).
+# Цілі/ворота — у відповідному configs/scenarios/patrol_long.yaml.
+ground_z: 0.0
+obstacles: []

@@ -1,0 +1,10 @@
+# Навчання Ultralytics YOLO на датасеті цілей (фаза 5).
+base_model: yolov8n.pt          # попередньо навчена (transfer learning) — потребує інтернету на перший запуск
+dataset_yaml: datasets/strike_range/dataset.yaml
+epochs: 30
+imgsz: 320
+batch: 8
+project_dir: runs/detect
+run_name: strike_range_yolov8n
+seed: 0
+conf_threshold: 0.25             # поріг впевненості для інференсу (ml/detection/detector.py)

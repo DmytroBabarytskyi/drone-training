@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dronesim"
+version = "0.1.0"
+description = "Симулятор-тренажер FPV/БПЛА у стилі Liftoff з ML-наведенням (віртуальне середовище)"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "panda3d>=1.10.14",         # 3D-рушій + рендер + вбудований Bullet (фізика)
+    "panda3d-simplepbr>=0.12",  # PBR-освітлення для "справжнього" вигляду
+    "pygame>=2.5",              # лише геймпад PlayStation (SDL); клавіатуру бере Panda3D
+    "omegaconf>=2.3",
+    "gymnasium>=0.29",
+]
+
+[project.optional-dependencies]
+# ML-залежності виносимо окремо: вони важкі й потрібні лише з фази 5.
+ml = [
+    "torch>=2.2",
+    "ultralytics>=8.2",
+    "stable-baselines3>=2.3",
+    "opencv-python>=4.9",
+]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.5",
+    "black>=24.0",
+]
+# GUI-лаунчер (доп. фаза "справжній Liftoff") — окрема extras-група, бо GUI-процес
+# НІКОЛИ не імпортує Panda3D/torch напряму (він лише запускає dronesim.app
+# subprocess'ом, render/gui/process.py), тож не повинен тягнути важкі залежності.
+gui = [
+    "PySide6>=6.5",
+]
+# Ассет-пайплайн Blender->Panda3D (доп. фаза "графіка 2.0") — потрібен ЛИШЕ
+# для перегенерації assets/models/*.bam з assets/blender/build_*.py
+# (CLI-утиліта gltf2bam); сама гра ЧИТАЄ вже готові .bam через звичайний
+# Panda3D loader, без будь-якого рантайм-імпорту цього пакета
+# (render/model_assets.py) — тому окрема extras-група, не core dependency.
+assets = [
+    "panda3d-gltf>=1.3",
+]
+
+[project.scripts]
+dronesim = "dronesim.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.black]
+line-length = 100
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+markers = [
+    "slow: важкі ML-інтеграційні тести (torch/ultralytics/sb3) — секунди-хвилини, не мс",
+]

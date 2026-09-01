@@ -1,0 +1,20 @@
+# Мапінг геймпада PlayStation (DualShock 4 / DualSense) через pygame/SDL.
+# Індекси осей можуть відрізнятися між ОС/драйверами — калібрувати у фазі 2.
+# Режим 2 (Mode 2), як у більшості FPV-пультів: газ+рискання — лівий стік,
+# тангаж+крен — правий стік.
+device: playstation
+deadzone: 0.06
+# expo=0.0 (лінійний ввід, доп. фаза "справжній Liftoff") — крива тепер
+# у rate_profile апарата (vehicles/controllers/rates.py), не тут, як і в
+# реальному BetaFlight (TX лінійний, FC рахує rates).
+expo: 0.0
+
+axes:
+  yaw:      { index: 0, invert: false }   # лівий стік X
+  throttle: { index: 1, invert: true }    # лівий стік Y (вгору = газ)
+  roll:     { index: 2, invert: false }   # правий стік X
+  pitch:    { index: 3, invert: true }    # правий стік Y
+
+buttons:
+  arm: 9          # Options
+  mode_switch: 8  # Share/Create

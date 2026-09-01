@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+
+# ML артефакти
+runs/
+datasets/
+*.pt
+*.onnx
+checkpoints/
+wandb/
+
+# Дані/логи симуляції
+logs/
+recordings/
+*.mp4
+*.gif
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,16 @@
+# Ефекти знищення (доп. фаза "реальні моделі"): спалах + дим + уламки з
+# реальною Bullet-фізикою. Один вибух на ціль strike_range, раз на перехід
+# hit False->True (app.py::_sync_target_markers).
+flash_duration_s: 0.3
+flash_size_m: 1.5
+
+smoke_duration_s: 2.0
+smoke_puff_count: 5
+smoke_size_m: 1.0
+
+debris_count: 6
+debris_half_extent_m: 0.12
+debris_mass_kg: 0.5
+debris_speed_min_mps: 3.0
+debris_speed_max_mps: 8.0
+debris_lifetime_s: 3.0
