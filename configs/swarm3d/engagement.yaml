@@ -1,0 +1,50 @@
+# 3-D interception engagement: cruise-missile-class threat vs a mesh of
+# interceptor quadrotors defending a point asset at the origin.
+#
+# Figures are open-source order-of-magnitude estimates, not performance data
+# for any specific system. See docs/swarm3d_engagement.md.
+
+threat:
+  speed_mps: 222.0          # ~800 km/h, subsonic cruise missile class
+  altitude_m: 100.0         # low-level ingress
+  spawn_x_m: 8000.0        # ~36 s of warning; the radar horizon allows far more
+  # Lateral offset of the actual track from the defended asset's centreline.
+  # The mesh does not know this - it sees only noisy radar fixes.
+  lateral_offset_range_m: [-60.0, 60.0]
+
+radar:
+  fix_interval_s: 1.0
+  noise_std_m: 15.0         # surveillance-grade, not fire control
+  # Below this range the drones' own seekers take over from radar cueing.
+  seeker_handover_range_m: 400.0
+  seeker_noise_std_m: 2.0
+
+mesh:
+  n_drones: 16
+  vehicle_config: vehicles/interceptor
+  # Ground pads: drones start landed, in a grid around the asset.
+  pad_spacing_m: 12.0
+  intercept_plane_x_m: 600.0   # engage this far out from the asset
+  formation_spacing_m: 12.0    # slot spacing inside the intercept plane
+  climb_target_alt_m: 100.0    # matches threat altitude
+  min_separation_m: 4.0
+  # How fast the formation centre may be commanded to move, in m/s. Set from
+  # what the vehicles can actually sustain, not tuned as a filter constant:
+  # commanding the formation faster than this just makes the mesh chase a
+  # point it can never reach.
+  aim_slew_mps: 18.0
+  # Predictions worse than this many formation radii are discarded outright -
+  # at that point the fit is not measuring anything useful.
+  aim_reject_multiplier: 4.0
+
+warhead:
+  lethal_radius_m: 6.0      # ~3 kg fragmentation charge, optimistic
+  # Probability the target is actually disabled given it passes within
+  # lethal_radius. Fragmentation against a hardened airframe is not a
+  # guaranteed kill (see docs).
+  kill_probability: 0.4
+
+sim:
+  physics_hz: 240.0
+  control_hz: 20.0
+  max_duration_s: 45.0

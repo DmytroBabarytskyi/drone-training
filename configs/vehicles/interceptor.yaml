@@ -1,0 +1,55 @@
+# Purpose-built interception quadrotor.
+#
+# Neither existing vehicle fits this role. `fpv_5inch` is a 0.55 kg acro
+# airframe with no position-hold gains at all, and `quad_large` is a 5 kg
+# workhorse capped at 3 m/s climb and 4 m/s horizontal - it cannot reach
+# altitude before a 222 m/s threat arrives, which is exactly how the first
+# engagement run failed.
+#
+# This is a heavier-than-racing airframe carrying a fragmentation payload,
+# with the thrust-to-weight of a racing quad. Figures are open-source
+# order-of-magnitude estimates for a interceptor-class vehicle.
+name: interceptor
+mass: 2.5             # kg, airframe + battery + ~1 kg payload
+arm_length: 0.25      # m
+body_half_extent: [0.10, 0.10, 0.05]
+inertia: [0.040, 0.040, 0.070]   # scaled from quad_large by mass and arm length
+max_thrust_per_motor: 32.0       # N -> ~5.2x weight, racing-class authority
+thrust_to_torque: 0.018
+drag_coeff: [0.06, 0.06, 0.14]    # streamlined interceptor, not a freestyle quad
+motor_count: 4
+
+motor_tau_s: 0.05             # between the 5" racing quad and the heavy lifter
+rotor_radius_m: 0.127         # 10" propeller
+battery_full_throttle_s: 360  # ~6 min at full throttle
+battery_sag_coeff: 0.10
+airmode: true
+
+# Rate loop. Scaled from quad_large by the inertia ratio (0.040/0.15), since
+# the same commanded angular acceleration needs proportionally less torque on
+# a lighter airframe.
+pid_rate:
+  roll:  { kp: 0.006, ki: 0.008, kd: 0.0003, i_limit: 0.5, d_filter_alpha: 0.6 }
+  pitch: { kp: 0.006, ki: 0.008, kd: 0.0003, i_limit: 0.5, d_filter_alpha: 0.6 }
+  yaw:   { kp: 0.010, ki: 0.012, kd: 0.0,    i_limit: 0.3, d_filter_alpha: 0.6 }
+
+max_rates: { roll: 180, pitch: 180, yaw: 90 }
+
+pid_angle:
+  roll:  { kp: 4.0, ki: 0.3, kd: 0.30, i_limit: 0.5 }
+  pitch: { kp: 4.0, ki: 0.3, kd: 0.30, i_limit: 0.5 }
+# Aggressive tilt is what buys lateral acceleration: at 70 degrees a vehicle
+# holding altitude pulls g*tan(70) = 27 m/s^2 sideways, and this airframe has
+# the thrust margin to sustain it.
+max_angle_deg: 70
+
+# Strong altitude authority is required, not optional: at 70 degrees of tilt
+# the vertical thrust component drops to cos(70) = 0.34 of total, and a
+# weakly-tuned altitude loop lets the vehicle descend into the ground during
+# its dash (observed directly while tuning).
+pid_altitude: { kp: 1.5, ki: 0.6, kd: 0.5, i_limit: 1.0 }
+max_climb_rate_mps: 20.0
+
+pid_position: { kp: 1.2, ki: 0.0, kd: 0.15, i_limit: 1.0 }
+pid_velocity: { kp: 0.06, ki: 0.01, kd: 0.01, i_limit: 0.3 }
+max_horizontal_speed_mps: 50.0

@@ -1,0 +1,4 @@
+seed   1  det=0 kill=0 n= 0  miss=  11.1 m  form_err= 11.7 m
+seed   2  det=0 kill=0 n= 0  miss=   8.6 m  form_err= 13.8 m
+seed   3  det=0 kill=0 n= 0  miss=  18.7 m  form_err= 19.2 m
+seed   4  det=1 kill=1 n= 1  miss=   5.7 m  form_err= 10.9 m
