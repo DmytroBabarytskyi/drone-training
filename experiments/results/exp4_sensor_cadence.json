@@ -1,0 +1,442 @@
+{
+  "experiment": "exp4_sensor_cadence",
+  "description": "Table III - mesh cost vs sensor cadence at fixed repositioning window",
+  "seed": 20260304,
+  "elapsed_s": 7.85,
+  "environment": {
+    "python": "3.11.9",
+    "numpy": "2.4.4",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "git_commit": "290043a7a00f53d1329da15604a99e57ea85beea",
+  "git_dirty": true,
+  "parameters": {
+    "sensor_noise_std_m": 4.0,
+    "r_m": 3.0,
+    "lead_time_s": 2.0,
+    "track_duration_s": 2.23,
+    "velocity_mps": [
+      -130.0,
+      10.0,
+      10.0
+    ],
+    "target_p": 0.8,
+    "mc_trials_per_row": 2000
+  },
+  "rows": [
+    {
+      "n_fixes": 3,
+      "rate_hz": 0.9,
+      "R_closed_form_m": 11.68,
+      "R_monte_carlo_m": 11.53,
+      "sigma_m": 8.26,
+      "n_at_target": 29.4,
+      "published": {
+        "rate_hz": 0.9,
+        "R_m": 11.68,
+        "MC_m": 11.66,
+        "sigma_m": 8.26,
+        "n_at_target": 29.4
+      }
+    },
+    {
+      "n_fixes": 4,
+      "rate_hz": 1.35,
+      "R_closed_form_m": 11.0,
+      "R_monte_carlo_m": 10.8,
+      "sigma_m": 7.78,
+      "n_at_target": 26.1,
+      "published": {
+        "rate_hz": 1.34,
+        "R_m": 11.0,
+        "MC_m": 10.96,
+        "sigma_m": 7.78,
+        "n_at_target": 26.1
+      }
+    },
+    {
+      "n_fixes": 5,
+      "rate_hz": 1.79,
+      "R_closed_form_m": 10.34,
+      "R_monte_carlo_m": 10.23,
+      "sigma_m": 7.31,
+      "n_at_target": 23.0,
+      "published": {
+        "rate_hz": 1.79,
+        "R_m": 10.34,
+        "MC_m": 10.47,
+        "sigma_m": 7.31,
+        "n_at_target": 23.0
+      }
+    },
+    {
+      "n_fixes": 6,
+      "rate_hz": 2.24,
+      "R_closed_form_m": 9.75,
+      "R_monte_carlo_m": 9.84,
+      "sigma_m": 6.9,
+      "n_at_target": 20.5,
+      "published": {
+        "rate_hz": 2.24,
+        "R_m": 9.75,
+        "MC_m": 9.76,
+        "sigma_m": 6.89,
+        "n_at_target": 20.5
+      }
+    },
+    {
+      "n_fixes": 8,
+      "rate_hz": 3.14,
+      "R_closed_form_m": 8.79,
+      "R_monte_carlo_m": 8.86,
+      "sigma_m": 6.22,
+      "n_at_target": 16.7,
+      "published": {
+        "rate_hz": 3.14,
+        "R_m": 8.79,
+        "MC_m": 8.71,
+        "sigma_m": 6.22,
+        "n_at_target": 16.7
+      }
+    },
+    {
+      "n_fixes": 12,
+      "rate_hz": 4.93,
+      "R_closed_form_m": 7.47,
+      "R_monte_carlo_m": 7.62,
+      "sigma_m": 5.28,
+      "n_at_target": 12.0,
+      "published": {
+        "rate_hz": 4.93,
+        "R_m": 7.47,
+        "MC_m": 7.43,
+        "sigma_m": 5.28,
+        "n_at_target": 12.0
+      }
+    },
+    {
+      "n_fixes": 16,
+      "rate_hz": 6.73,
+      "R_closed_form_m": 6.6,
+      "R_monte_carlo_m": 6.77,
+      "sigma_m": 4.67,
+      "n_at_target": 9.4,
+      "published": {
+        "rate_hz": 6.72,
+        "R_m": 6.6,
+        "MC_m": 6.57,
+        "sigma_m": 4.67,
+        "n_at_target": 9.4
+      }
+    },
+    {
+      "n_fixes": 24,
+      "rate_hz": 10.31,
+      "R_closed_form_m": 5.5,
+      "R_monte_carlo_m": 5.5,
+      "sigma_m": 3.89,
+      "n_at_target": 6.5,
+      "published": {
+        "rate_hz": 10.31,
+        "R_m": 5.5,
+        "MC_m": 5.5,
+        "sigma_m": 3.89,
+        "n_at_target": 6.5
+      }
+    }
+  ],
+  "sigma_tightening_x": 2.12,
+  "radius_lever": {
+    "at_n_fixes": 6,
+    "sigma_m": 6.9,
+    "n_by_r": {
+      "1.0": 184.6,
+      "2.0": 46.2,
+      "4.0": 11.5,
+      "8.0": 2.9
+    }
+  },
+  "checks": [
+    {
+      "label": "n=3: rate",
+      "reproduced": 0.9,
+      "published": 0.9,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=3: R",
+      "reproduced": 11.68,
+      "published": 11.68,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=3: sigma",
+      "reproduced": 8.26,
+      "published": 8.26,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=3: N at p=0.8",
+      "reproduced": 29.4,
+      "published": 29.4,
+      "abs_delta": 0.0,
+      "tolerance": 0.3,
+      "pass": true
+    },
+    {
+      "label": "n=4: rate",
+      "reproduced": 1.35,
+      "published": 1.34,
+      "abs_delta": 0.010000000000000009,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=4: R",
+      "reproduced": 11.0,
+      "published": 11.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=4: sigma",
+      "reproduced": 7.78,
+      "published": 7.78,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=4: N at p=0.8",
+      "reproduced": 26.1,
+      "published": 26.1,
+      "abs_delta": 0.0,
+      "tolerance": 0.3,
+      "pass": true
+    },
+    {
+      "label": "n=5: rate",
+      "reproduced": 1.79,
+      "published": 1.79,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=5: R",
+      "reproduced": 10.34,
+      "published": 10.34,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=5: sigma",
+      "reproduced": 7.31,
+      "published": 7.31,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=5: N at p=0.8",
+      "reproduced": 23.0,
+      "published": 23.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.3,
+      "pass": true
+    },
+    {
+      "label": "n=6: rate",
+      "reproduced": 2.24,
+      "published": 2.24,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=6: R",
+      "reproduced": 9.75,
+      "published": 9.75,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=6: sigma",
+      "reproduced": 6.9,
+      "published": 6.89,
+      "abs_delta": 0.010000000000000675,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=6: N at p=0.8",
+      "reproduced": 20.5,
+      "published": 20.5,
+      "abs_delta": 0.0,
+      "tolerance": 0.3,
+      "pass": true
+    },
+    {
+      "label": "n=8: rate",
+      "reproduced": 3.14,
+      "published": 3.14,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=8: R",
+      "reproduced": 8.79,
+      "published": 8.79,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=8: sigma",
+      "reproduced": 6.22,
+      "published": 6.22,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=8: N at p=0.8",
+      "reproduced": 16.7,
+      "published": 16.7,
+      "abs_delta": 0.0,
+      "tolerance": 0.3,
+      "pass": true
+    },
+    {
+      "label": "n=12: rate",
+      "reproduced": 4.93,
+      "published": 4.93,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=12: R",
+      "reproduced": 7.47,
+      "published": 7.47,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=12: sigma",
+      "reproduced": 5.28,
+      "published": 5.28,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=12: N at p=0.8",
+      "reproduced": 12.0,
+      "published": 12.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.3,
+      "pass": true
+    },
+    {
+      "label": "n=16: rate",
+      "reproduced": 6.73,
+      "published": 6.72,
+      "abs_delta": 0.010000000000000675,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=16: R",
+      "reproduced": 6.6,
+      "published": 6.6,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=16: sigma",
+      "reproduced": 4.67,
+      "published": 4.67,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=16: N at p=0.8",
+      "reproduced": 9.4,
+      "published": 9.4,
+      "abs_delta": 0.0,
+      "tolerance": 0.3,
+      "pass": true
+    },
+    {
+      "label": "n=24: rate",
+      "reproduced": 10.31,
+      "published": 10.31,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=24: R",
+      "reproduced": 5.5,
+      "published": 5.5,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=24: sigma",
+      "reproduced": 3.89,
+      "published": 3.89,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "n=24: N at p=0.8",
+      "reproduced": 6.5,
+      "published": 6.5,
+      "abs_delta": 0.0,
+      "tolerance": 0.3,
+      "pass": true
+    },
+    {
+      "label": "sigma tightening, 3 -> 24 fixes",
+      "reproduced": 2.1233933161953726,
+      "published": 2.1,
+      "abs_delta": 0.02339331619537255,
+      "tolerance": 0.1,
+      "pass": true
+    },
+    {
+      "label": "radius lever r=1.0",
+      "reproduced": 184.6,
+      "published": 184.0,
+      "abs_delta": 0.5999999999999943,
+      "tolerance": 3.0,
+      "pass": true
+    },
+    {
+      "label": "radius lever r=8.0",
+      "reproduced": 2.9,
+      "published": 3.0,
+      "abs_delta": 0.10000000000000009,
+      "tolerance": 3.0,
+      "pass": true
+    }
+  ],
+  "all_checks_pass": true
+}

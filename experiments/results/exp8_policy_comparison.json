@@ -1,0 +1,405 @@
+{
+  "experiment": "exp8_policy_comparison",
+  "description": "Tables VII and VIII - placement policies against the applicable ceiling",
+  "seed": 20260308,
+  "elapsed_s": 29.89,
+  "environment": {
+    "python": "3.11.9",
+    "numpy": "2.4.4",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "git_commit": "290043a7a00f53d1329da15604a99e57ea85beea",
+  "git_dirty": true,
+  "parameters": {
+    "episodes": 100,
+    "episode_seeds": [
+      3000,
+      3099
+    ],
+    "bootstrap_resamples": 10000,
+    "n_drones": 25,
+    "hit_radius_m": 3.0,
+    "min_separation_m": 2.5,
+    "coverage_half_extent_m": 35.0,
+    "window_s": 4.0,
+    "checkpoints": {
+      "ppo_seed0": "runs\\rl\\ppo_swarm_intercept\\model.zip",
+      "ppo_seed1": "runs\\rl\\ppo_swarm_intercept\\model_seed1.zip",
+      "ppo_seed2": "runs\\rl\\ppo_swarm_intercept\\model_seed2.zip"
+    }
+  },
+  "denominator": {
+    "mean_sigma_m": 4.573,
+    "reachability_factor": 1.0,
+    "packing_ceiling": 0.9045,
+    "covering_ceiling": 0.9883,
+    "applicable_ceiling": 0.9883,
+    "applicable_regime": "covering"
+  },
+  "table7": [
+    {
+      "policy": "null",
+      "hit_rate": 0.14,
+      "ci_lo": 0.08,
+      "ci_hi": 0.21,
+      "collisions": 0.0,
+      "of_packing_pct": 15.5,
+      "of_covering_pct": 14.2
+    },
+    {
+      "policy": "ppo_seed0",
+      "hit_rate": 0.12,
+      "ci_lo": 0.06,
+      "ci_hi": 0.19,
+      "collisions": 0.78,
+      "of_packing_pct": 13.3,
+      "of_covering_pct": 12.1
+    },
+    {
+      "policy": "ppo_seed1",
+      "hit_rate": 0.19,
+      "ci_lo": 0.12,
+      "ci_hi": 0.27,
+      "collisions": 0.74,
+      "of_packing_pct": 21.0,
+      "of_covering_pct": 19.2
+    },
+    {
+      "policy": "ppo_seed2",
+      "hit_rate": 0.14,
+      "ci_lo": 0.08,
+      "ci_hi": 0.21,
+      "collisions": 0.61,
+      "of_packing_pct": 15.5,
+      "of_covering_pct": 14.2
+    },
+    {
+      "policy": "analytic_hex",
+      "hit_rate": 0.84,
+      "ci_lo": 0.77,
+      "ci_hi": 0.91,
+      "collisions": 0.62,
+      "of_packing_pct": 92.9,
+      "of_covering_pct": 85.0
+    },
+    {
+      "policy": "analytic_hex_repulsion",
+      "hit_rate": 0.79,
+      "ci_lo": 0.71,
+      "ci_hi": 0.87,
+      "collisions": 0.49,
+      "of_packing_pct": 87.3,
+      "of_covering_pct": 79.9
+    }
+  ],
+  "ppo_mean_hit_rate": 0.15,
+  "table8_paired": [
+    {
+      "policy": "ppo_seed0",
+      "mean_difference": -0.02,
+      "ci_lo": -0.11,
+      "ci_hi": 0.07,
+      "contains_zero": true,
+      "episode_correlation_with_null": 0.117
+    },
+    {
+      "policy": "ppo_seed1",
+      "mean_difference": 0.05,
+      "ci_lo": -0.06,
+      "ci_hi": 0.16,
+      "contains_zero": true,
+      "episode_correlation_with_null": -0.122
+    },
+    {
+      "policy": "ppo_seed2",
+      "mean_difference": 0.0,
+      "ci_lo": -0.1,
+      "ci_hi": 0.1,
+      "contains_zero": true,
+      "episode_correlation_with_null": -0.08
+    },
+    {
+      "policy": "analytic_hex",
+      "mean_difference": 0.7,
+      "ci_lo": 0.6,
+      "ci_hi": 0.79,
+      "contains_zero": false,
+      "episode_correlation_with_null": 0.097
+    },
+    {
+      "policy": "analytic_hex_repulsion",
+      "mean_difference": 0.65,
+      "ci_lo": 0.55,
+      "ci_hi": 0.75,
+      "contains_zero": false,
+      "episode_correlation_with_null": 0.067
+    }
+  ],
+  "checks": [
+    {
+      "label": "mean sigma",
+      "reproduced": 4.572731105058178,
+      "published": 4.57,
+      "abs_delta": 0.002731105058177974,
+      "tolerance": 0.15,
+      "pass": true
+    },
+    {
+      "label": "reachability factor",
+      "reproduced": 1.0,
+      "published": 1.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.001,
+      "pass": true
+    },
+    {
+      "label": "packing ceiling",
+      "reproduced": 0.9044948634734272,
+      "published": 0.904,
+      "abs_delta": 0.0004948634734271984,
+      "tolerance": 0.006,
+      "pass": true
+    },
+    {
+      "label": "covering ceiling",
+      "reproduced": 0.9883146342473544,
+      "published": 0.988,
+      "abs_delta": 0.00031463424735445056,
+      "tolerance": 0.006,
+      "pass": true
+    },
+    {
+      "label": "PPO mean over seeds",
+      "reproduced": 0.15,
+      "published": 0.15,
+      "abs_delta": 0.0,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "null: hit rate",
+      "reproduced": 0.14,
+      "published": 0.14,
+      "abs_delta": 0.0,
+      "tolerance": 0.05,
+      "pass": true
+    },
+    {
+      "label": "null: collisions",
+      "reproduced": 0.0,
+      "published": 0.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.08,
+      "pass": true
+    },
+    {
+      "label": "null: % of covering ceiling",
+      "reproduced": 14.2,
+      "published": 14.2,
+      "abs_delta": 0.0,
+      "tolerance": 5.0,
+      "pass": true
+    },
+    {
+      "label": "ppo_seed0: hit rate",
+      "reproduced": 0.12,
+      "published": 0.12,
+      "abs_delta": 0.0,
+      "tolerance": 0.05,
+      "pass": true
+    },
+    {
+      "label": "ppo_seed0: collisions",
+      "reproduced": 0.78,
+      "published": 0.78,
+      "abs_delta": 0.0,
+      "tolerance": 0.08,
+      "pass": true
+    },
+    {
+      "label": "ppo_seed0: % of covering ceiling",
+      "reproduced": 12.1,
+      "published": 12.1,
+      "abs_delta": 0.0,
+      "tolerance": 5.0,
+      "pass": true
+    },
+    {
+      "label": "ppo_seed1: hit rate",
+      "reproduced": 0.19,
+      "published": 0.19,
+      "abs_delta": 0.0,
+      "tolerance": 0.05,
+      "pass": true
+    },
+    {
+      "label": "ppo_seed1: collisions",
+      "reproduced": 0.74,
+      "published": 0.74,
+      "abs_delta": 0.0,
+      "tolerance": 0.08,
+      "pass": true
+    },
+    {
+      "label": "ppo_seed1: % of covering ceiling",
+      "reproduced": 19.2,
+      "published": 19.2,
+      "abs_delta": 0.0,
+      "tolerance": 5.0,
+      "pass": true
+    },
+    {
+      "label": "ppo_seed2: hit rate",
+      "reproduced": 0.14,
+      "published": 0.14,
+      "abs_delta": 0.0,
+      "tolerance": 0.05,
+      "pass": true
+    },
+    {
+      "label": "ppo_seed2: collisions",
+      "reproduced": 0.61,
+      "published": 0.61,
+      "abs_delta": 0.0,
+      "tolerance": 0.08,
+      "pass": true
+    },
+    {
+      "label": "ppo_seed2: % of covering ceiling",
+      "reproduced": 14.2,
+      "published": 14.2,
+      "abs_delta": 0.0,
+      "tolerance": 5.0,
+      "pass": true
+    },
+    {
+      "label": "analytic_hex: hit rate",
+      "reproduced": 0.84,
+      "published": 0.84,
+      "abs_delta": 0.0,
+      "tolerance": 0.05,
+      "pass": true
+    },
+    {
+      "label": "analytic_hex: collisions",
+      "reproduced": 0.62,
+      "published": 0.62,
+      "abs_delta": 0.0,
+      "tolerance": 0.08,
+      "pass": true
+    },
+    {
+      "label": "analytic_hex: % of covering ceiling",
+      "reproduced": 85.0,
+      "published": 85.0,
+      "abs_delta": 0.0,
+      "tolerance": 5.0,
+      "pass": true
+    },
+    {
+      "label": "analytic_hex_repulsion: hit rate",
+      "reproduced": 0.79,
+      "published": 0.79,
+      "abs_delta": 0.0,
+      "tolerance": 0.05,
+      "pass": true
+    },
+    {
+      "label": "analytic_hex_repulsion: collisions",
+      "reproduced": 0.49,
+      "published": 0.49,
+      "abs_delta": 0.0,
+      "tolerance": 0.08,
+      "pass": true
+    },
+    {
+      "label": "analytic_hex_repulsion: % of covering ceiling",
+      "reproduced": 79.9,
+      "published": 79.9,
+      "abs_delta": 0.0,
+      "tolerance": 5.0,
+      "pass": true
+    },
+    {
+      "label": "ppo_seed0: paired mean",
+      "reproduced": -0.02,
+      "published": -0.02,
+      "abs_delta": 0.0,
+      "tolerance": 0.05,
+      "pass": true
+    },
+    {
+      "label": "ppo_seed0: zero inside interval matches paper",
+      "reproduced": 1.0,
+      "published": 1.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.0,
+      "pass": true
+    },
+    {
+      "label": "ppo_seed1: paired mean",
+      "reproduced": 0.05,
+      "published": 0.05,
+      "abs_delta": 0.0,
+      "tolerance": 0.05,
+      "pass": true
+    },
+    {
+      "label": "ppo_seed1: zero inside interval matches paper",
+      "reproduced": 1.0,
+      "published": 1.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.0,
+      "pass": true
+    },
+    {
+      "label": "ppo_seed2: paired mean",
+      "reproduced": 0.0,
+      "published": 0.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.05,
+      "pass": true
+    },
+    {
+      "label": "ppo_seed2: zero inside interval matches paper",
+      "reproduced": 1.0,
+      "published": 1.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.0,
+      "pass": true
+    },
+    {
+      "label": "analytic_hex: paired mean",
+      "reproduced": 0.7,
+      "published": 0.7,
+      "abs_delta": 0.0,
+      "tolerance": 0.05,
+      "pass": true
+    },
+    {
+      "label": "analytic_hex: zero inside interval matches paper",
+      "reproduced": 0.0,
+      "published": 0.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.0,
+      "pass": true
+    },
+    {
+      "label": "analytic_hex_repulsion: paired mean",
+      "reproduced": 0.65,
+      "published": 0.65,
+      "abs_delta": 0.0,
+      "tolerance": 0.05,
+      "pass": true
+    },
+    {
+      "label": "analytic_hex_repulsion: zero inside interval matches paper",
+      "reproduced": 0.0,
+      "published": 0.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.0,
+      "pass": true
+    }
+  ],
+  "all_checks_pass": true
+}

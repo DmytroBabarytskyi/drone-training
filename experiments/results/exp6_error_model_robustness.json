@@ -1,0 +1,345 @@
+{
+  "experiment": "exp6_error_model_robustness",
+  "description": "Table V / Figure 6 - coverage delivered by a mesh sized for a Gaussian",
+  "seed": 20260306,
+  "elapsed_s": 39.3,
+  "environment": {
+    "python": "3.11.9",
+    "numpy": "2.4.4",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "git_commit": "290043a7a00f53d1329da15604a99e57ea85beea",
+  "git_dirty": true,
+  "parameters": {
+    "sigma_m": 9.25,
+    "r_m": 2.0,
+    "target_p": 0.6,
+    "n_sized_for_gaussian": 43,
+    "trials_per_model": 200000,
+    "normalisation": {
+      "student_t": "marginal variance held at sigma^2",
+      "elliptical": "trace of covariance held at 2*sigma^2",
+      "bias": "Gaussian of the assumed width, centre displaced by k*sigma"
+    }
+  },
+  "rows": [
+    {
+      "error_model": "gaussian",
+      "delivered": 0.601,
+      "surplus": 0.001,
+      "n_for_target": 43,
+      "inflation_x": 1.0,
+      "published": {
+        "delivered": 0.602,
+        "n_for_target": 43
+      }
+    },
+    {
+      "error_model": "student_t_nu10",
+      "delivered": 0.625,
+      "surplus": 0.025,
+      "n_for_target": 39,
+      "inflation_x": 0.91,
+      "published": {
+        "delivered": 0.626,
+        "n_for_target": 39
+      }
+    },
+    {
+      "error_model": "student_t_nu5",
+      "delivered": 0.662,
+      "surplus": 0.062,
+      "n_for_target": 35,
+      "inflation_x": 0.81,
+      "published": {
+        "delivered": 0.663,
+        "n_for_target": 35
+      }
+    },
+    {
+      "error_model": "student_t_nu3",
+      "delivered": 0.734,
+      "surplus": 0.134,
+      "n_for_target": 25,
+      "inflation_x": 0.58,
+      "published": {
+        "delivered": 0.734,
+        "n_for_target": 24
+      }
+    },
+    {
+      "error_model": "elliptical_2to1",
+      "delivered": 0.625,
+      "surplus": 0.025,
+      "n_for_target": 40,
+      "inflation_x": 0.93,
+      "published": {
+        "delivered": 0.625,
+        "n_for_target": 40
+      }
+    },
+    {
+      "error_model": "elliptical_4to1",
+      "delivered": 0.626,
+      "surplus": 0.026,
+      "n_for_target": 37,
+      "inflation_x": 0.86,
+      "published": {
+        "delivered": 0.629,
+        "n_for_target": 37
+      }
+    },
+    {
+      "error_model": "elliptical_8to1",
+      "delivered": 0.634,
+      "surplus": 0.034,
+      "n_for_target": 37,
+      "inflation_x": 0.86,
+      "published": {
+        "delivered": 0.635,
+        "n_for_target": 37
+      }
+    },
+    {
+      "error_model": "biased_0.5sigma",
+      "delivered": 0.562,
+      "surplus": -0.038,
+      "n_for_target": 47,
+      "inflation_x": 1.09,
+      "published": {
+        "delivered": 0.562,
+        "n_for_target": 47
+      }
+    },
+    {
+      "error_model": "biased_1.0sigma",
+      "delivered": 0.457,
+      "surplus": -0.143,
+      "n_for_target": 67,
+      "inflation_x": 1.56,
+      "published": {
+        "delivered": 0.456,
+        "n_for_target": 67
+      }
+    },
+    {
+      "error_model": "biased_2.0sigma",
+      "delivered": 0.187,
+      "surplus": -0.413,
+      "n_for_target": 138,
+      "inflation_x": 3.21,
+      "published": {
+        "delivered": 0.185,
+        "n_for_target": 136
+      }
+    }
+  ],
+  "summary": {
+    "one_sigma_bias_cost_points": 14.3,
+    "two_sigma_bias_cost_points": 41.3,
+    "shape_departures_conservative": true
+  },
+  "checks": [
+    {
+      "label": "mesh sized for a Gaussian",
+      "reproduced": 43.0,
+      "published": 43.0,
+      "abs_delta": 0.0,
+      "tolerance": 1.0,
+      "pass": true
+    },
+    {
+      "label": "gaussian: delivered",
+      "reproduced": 0.601,
+      "published": 0.602,
+      "abs_delta": 0.0010000000000000009,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "gaussian: N for target",
+      "reproduced": 43.0,
+      "published": 43.0,
+      "abs_delta": 0.0,
+      "tolerance": 5.16,
+      "pass": true
+    },
+    {
+      "label": "student_t_nu10: delivered",
+      "reproduced": 0.625,
+      "published": 0.626,
+      "abs_delta": 0.0010000000000000009,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "student_t_nu10: N for target",
+      "reproduced": 39.0,
+      "published": 39.0,
+      "abs_delta": 0.0,
+      "tolerance": 4.68,
+      "pass": true
+    },
+    {
+      "label": "student_t_nu5: delivered",
+      "reproduced": 0.662,
+      "published": 0.663,
+      "abs_delta": 0.0010000000000000009,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "student_t_nu5: N for target",
+      "reproduced": 35.0,
+      "published": 35.0,
+      "abs_delta": 0.0,
+      "tolerance": 4.2,
+      "pass": true
+    },
+    {
+      "label": "student_t_nu3: delivered",
+      "reproduced": 0.734,
+      "published": 0.734,
+      "abs_delta": 0.0,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "student_t_nu3: N for target",
+      "reproduced": 25.0,
+      "published": 24.0,
+      "abs_delta": 1.0,
+      "tolerance": 3.0,
+      "pass": true
+    },
+    {
+      "label": "elliptical_2to1: delivered",
+      "reproduced": 0.625,
+      "published": 0.625,
+      "abs_delta": 0.0,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "elliptical_2to1: N for target",
+      "reproduced": 40.0,
+      "published": 40.0,
+      "abs_delta": 0.0,
+      "tolerance": 4.8,
+      "pass": true
+    },
+    {
+      "label": "elliptical_4to1: delivered",
+      "reproduced": 0.626,
+      "published": 0.629,
+      "abs_delta": 0.0030000000000000027,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "elliptical_4to1: N for target",
+      "reproduced": 37.0,
+      "published": 37.0,
+      "abs_delta": 0.0,
+      "tolerance": 4.4399999999999995,
+      "pass": true
+    },
+    {
+      "label": "elliptical_8to1: delivered",
+      "reproduced": 0.634,
+      "published": 0.635,
+      "abs_delta": 0.0010000000000000009,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "elliptical_8to1: N for target",
+      "reproduced": 37.0,
+      "published": 37.0,
+      "abs_delta": 0.0,
+      "tolerance": 4.4399999999999995,
+      "pass": true
+    },
+    {
+      "label": "biased_0.5sigma: delivered",
+      "reproduced": 0.562,
+      "published": 0.562,
+      "abs_delta": 0.0,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "biased_0.5sigma: N for target",
+      "reproduced": 47.0,
+      "published": 47.0,
+      "abs_delta": 0.0,
+      "tolerance": 5.64,
+      "pass": true
+    },
+    {
+      "label": "biased_1.0sigma: delivered",
+      "reproduced": 0.457,
+      "published": 0.456,
+      "abs_delta": 0.0010000000000000009,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "biased_1.0sigma: N for target",
+      "reproduced": 67.0,
+      "published": 67.0,
+      "abs_delta": 0.0,
+      "tolerance": 8.04,
+      "pass": true
+    },
+    {
+      "label": "biased_2.0sigma: delivered",
+      "reproduced": 0.187,
+      "published": 0.185,
+      "abs_delta": 0.0020000000000000018,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "biased_2.0sigma: N for target",
+      "reproduced": 138.0,
+      "published": 136.0,
+      "abs_delta": 2.0,
+      "tolerance": 16.32,
+      "pass": true
+    },
+    {
+      "label": "one-sigma bias cost (points)",
+      "reproduced": 14.299999999999995,
+      "published": 15.0,
+      "abs_delta": 0.7000000000000046,
+      "tolerance": 3.0,
+      "pass": true
+    },
+    {
+      "label": "two-sigma bias cost (points)",
+      "reproduced": 41.3,
+      "published": 42.0,
+      "abs_delta": 0.7000000000000028,
+      "tolerance": 4.0,
+      "pass": true
+    },
+    {
+      "label": "two-sigma bias inflation",
+      "reproduced": 3.21,
+      "published": 3.2,
+      "abs_delta": 0.009999999999999787,
+      "tolerance": 0.4,
+      "pass": true
+    },
+    {
+      "label": "shape departures conservative",
+      "reproduced": 1.0,
+      "published": 1.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.0,
+      "pass": true
+    }
+  ],
+  "all_checks_pass": true
+}

@@ -1,0 +1,367 @@
+{
+  "experiment": "exp2_planar_coverage",
+  "description": "Table II / Figure 2 - planar coverage law, area-ratio audit, sigma/r scaling",
+  "seed": 20260302,
+  "elapsed_s": 22.27,
+  "environment": {
+    "python": "3.11.9",
+    "numpy": "2.4.4",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "git_commit": "290043a7a00f53d1329da15604a99e57ea85beea",
+  "git_dirty": true,
+  "parameters": {
+    "sigma_m": 9.25,
+    "r_m": 2.0,
+    "sigma_over_r": 4.625,
+    "audit_trials_per_cell": 200000,
+    "sweep_trials_per_point": 40000,
+    "eta2": 0.9068996821171089
+  },
+  "law_vs_mc": [
+    {
+      "n_agents": 1,
+      "p_law": 0.0231,
+      "p_mc": 0.0228,
+      "abs_delta": 0.0003
+    },
+    {
+      "n_agents": 2,
+      "p_law": 0.0456,
+      "p_mc": 0.0445,
+      "abs_delta": 0.0011
+    },
+    {
+      "n_agents": 3,
+      "p_law": 0.0675,
+      "p_mc": 0.0666,
+      "abs_delta": 0.0009
+    },
+    {
+      "n_agents": 5,
+      "p_law": 0.1097,
+      "p_mc": 0.1093,
+      "abs_delta": 0.0004
+    },
+    {
+      "n_agents": 8,
+      "p_law": 0.169,
+      "p_mc": 0.1659,
+      "abs_delta": 0.0031
+    },
+    {
+      "n_agents": 13,
+      "p_law": 0.2582,
+      "p_mc": 0.2513,
+      "abs_delta": 0.0069
+    },
+    {
+      "n_agents": 21,
+      "p_law": 0.3791,
+      "p_mc": 0.3753,
+      "abs_delta": 0.0037
+    },
+    {
+      "n_agents": 34,
+      "p_law": 0.5293,
+      "p_mc": 0.5272,
+      "abs_delta": 0.0022
+    },
+    {
+      "n_agents": 55,
+      "p_law": 0.6872,
+      "p_mc": 0.6823,
+      "abs_delta": 0.0049
+    },
+    {
+      "n_agents": 86,
+      "p_law": 0.8081,
+      "p_mc": 0.8057,
+      "abs_delta": 0.0023
+    },
+    {
+      "n_agents": 110,
+      "p_law": 0.8537,
+      "p_mc": 0.8517,
+      "abs_delta": 0.0019
+    },
+    {
+      "n_agents": 130,
+      "p_law": 0.8751,
+      "p_mc": 0.8748,
+      "abs_delta": 0.0003
+    }
+  ],
+  "area_ratio_audit": [
+    {
+      "m": 1.0,
+      "n_by_rule": 22,
+      "claimed_p": 0.393,
+      "delivered_p_law": 0.393,
+      "delivered_p_mc": 0.388,
+      "n_required": 22.1,
+      "n_required_unreachable": false,
+      "inflation_x": 1.0,
+      "published": {
+        "n_by_rule": 22,
+        "claimed_p": 0.394,
+        "actual_p": 0.388,
+        "n_required": 22.1
+      }
+    },
+    {
+      "m": 1.5,
+      "n_by_rule": 49,
+      "claimed_p": 0.675,
+      "delivered_p_law": 0.65,
+      "delivered_p_mc": 0.646,
+      "n_required": 53.0,
+      "n_required_unreachable": false,
+      "inflation_x": 1.08,
+      "published": {
+        "n_by_rule": 49,
+        "claimed_p": 0.675,
+        "actual_p": 0.643,
+        "n_required": 53.0
+      }
+    },
+    {
+      "m": 2.0,
+      "n_by_rule": 86,
+      "claimed_p": 0.865,
+      "delivered_p_law": 0.808,
+      "delivered_p_mc": 0.806,
+      "n_required": 119.0,
+      "n_required_unreachable": false,
+      "inflation_x": 1.38,
+      "published": {
+        "n_by_rule": 86,
+        "claimed_p": 0.865,
+        "actual_p": 0.806,
+        "n_required": 119.0
+      }
+    },
+    {
+      "m": 2.5,
+      "n_by_rule": 134,
+      "claimed_p": 0.956,
+      "delivered_p_law": 0.878,
+      "delivered_p_mc": 0.877,
+      "n_required": null,
+      "n_required_unreachable": true,
+      "inflation_x": null,
+      "published": {
+        "n_by_rule": 134,
+        "claimed_p": 0.956,
+        "actual_p": 0.877,
+        "n_required": null
+      }
+    }
+  ],
+  "scaling": {
+    "target_p": 0.8,
+    "rows": [
+      {
+        "sigma": 2.0,
+        "r": 2.0,
+        "sigma_over_r": 1.0,
+        "n_measured": 6,
+        "n_law": 3.9,
+        "delta_pct": 54.7
+      },
+      {
+        "sigma": 3.0,
+        "r": 2.0,
+        "sigma_over_r": 1.5,
+        "n_measured": 11,
+        "n_law": 8.7,
+        "delta_pct": 26.1
+      },
+      {
+        "sigma": 4.0,
+        "r": 2.0,
+        "sigma_over_r": 2.0,
+        "n_measured": 17,
+        "n_law": 15.5,
+        "delta_pct": 9.6
+      },
+      {
+        "sigma": 6.0,
+        "r": 2.0,
+        "sigma_over_r": 3.0,
+        "n_measured": 36,
+        "n_law": 34.9,
+        "delta_pct": 3.1
+      },
+      {
+        "sigma": 9.25,
+        "r": 2.0,
+        "sigma_over_r": 4.625,
+        "n_measured": 84,
+        "n_law": 83.0,
+        "delta_pct": 1.3
+      },
+      {
+        "sigma": 12.0,
+        "r": 2.0,
+        "sigma_over_r": 6.0,
+        "n_measured": 142,
+        "n_law": 139.6,
+        "delta_pct": 1.7
+      },
+      {
+        "sigma": 9.25,
+        "r": 1.5,
+        "sigma_over_r": 6.167,
+        "n_measured": 151,
+        "n_law": 147.5,
+        "delta_pct": 2.4
+      },
+      {
+        "sigma": 9.25,
+        "r": 3.0,
+        "sigma_over_r": 3.083,
+        "n_measured": 38,
+        "n_law": 36.9,
+        "delta_pct": 3.1
+      },
+      {
+        "sigma": 18.0,
+        "r": 3.0,
+        "sigma_over_r": 6.0,
+        "n_measured": 141,
+        "n_law": 139.6,
+        "delta_pct": 1.0
+      }
+    ],
+    "fitted_exponent": 1.808,
+    "note": "The exponent is exact by construction in (7); fitting it back from the closed form would be circular. These counts are the smallest N whose MEASURED coverage reaches the target, so the fit is empirical. The shortfall from 2 sits at the smallest budgets, where an integer number of discs cannot track a continuous law."
+  },
+  "grid_dependent_statistics": {
+    "fitted_exponent": {
+      "reproduced": 1.808,
+      "published": 1.876,
+      "grid_dependent": true
+    },
+    "worst_count_delta_pct": {
+      "reproduced": 54.7,
+      "published": 16.0,
+      "grid_dependent": true
+    }
+  },
+  "checks": [
+    {
+      "label": "law vs MC, worst |delta|",
+      "reproduced": 0.0069,
+      "published": 0.007,
+      "abs_delta": 0.00010000000000000026,
+      "tolerance": 0.004,
+      "pass": true
+    },
+    {
+      "label": "packing ceiling",
+      "reproduced": 0.9068996821171089,
+      "published": 0.9069,
+      "abs_delta": 3.178828911210019e-07,
+      "tolerance": 0.0001,
+      "pass": true
+    },
+    {
+      "label": "m=1.0: claimed p",
+      "reproduced": 0.393,
+      "published": 0.394,
+      "abs_delta": 0.0010000000000000009,
+      "tolerance": 0.002,
+      "pass": true
+    },
+    {
+      "label": "m=1.0: delivered p",
+      "reproduced": 0.388,
+      "published": 0.388,
+      "abs_delta": 0.0,
+      "tolerance": 0.012,
+      "pass": true
+    },
+    {
+      "label": "m=1.0: N required",
+      "reproduced": 22.1,
+      "published": 22.1,
+      "abs_delta": 0.0,
+      "tolerance": 1.0,
+      "pass": true
+    },
+    {
+      "label": "m=1.5: claimed p",
+      "reproduced": 0.675,
+      "published": 0.675,
+      "abs_delta": 0.0,
+      "tolerance": 0.002,
+      "pass": true
+    },
+    {
+      "label": "m=1.5: delivered p",
+      "reproduced": 0.646,
+      "published": 0.643,
+      "abs_delta": 0.0030000000000000027,
+      "tolerance": 0.012,
+      "pass": true
+    },
+    {
+      "label": "m=1.5: N required",
+      "reproduced": 53.0,
+      "published": 53.0,
+      "abs_delta": 0.0,
+      "tolerance": 1.0,
+      "pass": true
+    },
+    {
+      "label": "m=2.0: claimed p",
+      "reproduced": 0.865,
+      "published": 0.865,
+      "abs_delta": 0.0,
+      "tolerance": 0.002,
+      "pass": true
+    },
+    {
+      "label": "m=2.0: delivered p",
+      "reproduced": 0.806,
+      "published": 0.806,
+      "abs_delta": 0.0,
+      "tolerance": 0.012,
+      "pass": true
+    },
+    {
+      "label": "m=2.0: N required",
+      "reproduced": 119.0,
+      "published": 119.0,
+      "abs_delta": 0.0,
+      "tolerance": 1.0,
+      "pass": true
+    },
+    {
+      "label": "m=2.5: claimed p",
+      "reproduced": 0.956,
+      "published": 0.956,
+      "abs_delta": 0.0,
+      "tolerance": 0.002,
+      "pass": true
+    },
+    {
+      "label": "m=2.5: delivered p",
+      "reproduced": 0.877,
+      "published": 0.877,
+      "abs_delta": 0.0,
+      "tolerance": 0.012,
+      "pass": true
+    },
+    {
+      "label": "m=2.5: unreachable at any N",
+      "reproduced": 1.0,
+      "published": 1.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.0,
+      "pass": true
+    }
+  ],
+  "all_checks_pass": true
+}

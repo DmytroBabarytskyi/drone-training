@@ -17,6 +17,12 @@ datasets/
 checkpoints/
 wandb/
 
+# ...except the archived policy checkpoints the preprint's experiment 8 loads.
+# They are small (5 x 0.8 MB) and version-controlling them is what makes
+# experiments/run_all.py work from a fresh clone.
+!experiments/checkpoints/
+!experiments/checkpoints/*.zip
+
 # Дані/логи симуляції
 logs/
 recordings/

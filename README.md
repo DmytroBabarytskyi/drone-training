@@ -179,6 +179,65 @@ through pygame/SDL, configuration through OmegaConf, and tests through pytest.
 
 ---
 
+## The preprint's experiments
+
+The analysis in *Feasibility Ceilings Before Learning: Sizing and Timing Bounds
+for Drone-Mesh Interception* is reproduced end to end by the scripts in
+[`experiments/`](experiments/). A single entry point regenerates every number
+and every figure in the paper:
+
+```bash
+python experiments/run_all.py
+```
+
+It runs the eight experiment scripts in order, then the figure generator, then
+prints every reproduced value against the one printed in the manuscript. Exit
+status is non-zero if any assertable check fails, so it doubles as a regression
+test on the analysis. Expect roughly four minutes on a laptop CPU.
+
+| script | produces |
+|---|---|
+| `exp1_prediction_uncertainty.py` | Table I, Figure 1 |
+| `exp2_planar_coverage.py` | Table II, Figure 2 |
+| `exp3_volumetric_coverage.py` | Figure 3 |
+| `exp4_sensor_cadence.py` | Table III |
+| `exp5_placement_strategies.py` | Table IV, Figure 4 |
+| `exp6_error_model_robustness.py` | Table V, Figure 5 |
+| `exp7_commit_window.py` | Table VI, Figure 6 |
+| `exp8_policy_comparison.py` | Tables VII and VIII |
+| `make_figures.py` | all six figures, from the recorded results |
+
+Three properties are worth stating explicitly.
+
+**The scripts import the prototype, they do not restate it.** The propagated
+prediction uncertainty comes from
+`dronesim.ml.swarm.intercept_predictor._propagate_crossing_uncertainty`, the
+mesh geometry from `analytic_policy.hex_lattice_slots`, the closed-form sizing
+and timing laws from `swarm.coverage_laws`, and experiment 8 drives the
+policies through `scripts/eval_swarm_intercept.py`'s own `run_episode`. A
+validation run therefore tests the implementation that actually flies, not a
+parallel copy of the algebra.
+
+**Every Monte Carlo seed is fixed and stated**, in `experiments/_common.py`.
+Each run writes a JSON record to `experiments/results/` carrying the table it
+produced, the parameters behind it, the published values it was checked
+against, and the environment it ran in.
+
+**The archived policy checkpoints are in version control**, under
+[`experiments/checkpoints/`](experiments/checkpoints/) — the three trainer
+seeds behind Table VII, plus the original and the determinism-retrain copies
+of seed 0. Their training configurations are
+`configs/ml/ppo_swarm_intercept*.yaml`. The working `runs/` directory stays
+gitignored; these are the copies the paper's numbers came from.
+
+A handful of reported values are deliberately *not* asserted, because the
+manuscript does not record the grid or construction they depend on — the
+fitted exponent of Section V-B, the random-placement row of Table IV, and the
+narrow and wide corridors of Table VI. Those are printed as "reported, not
+asserted" and carried in the JSON records with both values side by side.
+
+---
+
 ## Status
 
 Phases 0 through 7 are complete: scaffolding, physics, manual flight, large-UAV

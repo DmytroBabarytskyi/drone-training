@@ -1,0 +1,138 @@
+{
+  "experiment": "exp3_volumetric_coverage",
+  "description": "Figure 3 - volumetric coverage law vs Monte Carlo over an FCC lattice",
+  "seed": 20260303,
+  "elapsed_s": 5.97,
+  "environment": {
+    "python": "3.11.9",
+    "numpy": "2.4.4",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "git_commit": "290043a7a00f53d1329da15604a99e57ea85beea",
+  "git_dirty": true,
+  "parameters": {
+    "sigma_m": 9.25,
+    "r_m": 2.0,
+    "trials_per_point": 40000,
+    "eta3": 0.7404804896930611
+  },
+  "law_vs_mc": [
+    {
+      "n_agents": 1,
+      "p_law": 0.0026,
+      "p_mc": 0.0028,
+      "abs_delta": 0.0001
+    },
+    {
+      "n_agents": 2,
+      "p_law": 0.0052,
+      "p_mc": 0.0048,
+      "abs_delta": 0.0004
+    },
+    {
+      "n_agents": 4,
+      "p_law": 0.0103,
+      "p_mc": 0.0099,
+      "abs_delta": 0.0004
+    },
+    {
+      "n_agents": 8,
+      "p_law": 0.0201,
+      "p_mc": 0.0185,
+      "abs_delta": 0.0016
+    },
+    {
+      "n_agents": 16,
+      "p_law": 0.0386,
+      "p_mc": 0.037,
+      "abs_delta": 0.0016
+    },
+    {
+      "n_agents": 32,
+      "p_law": 0.0726,
+      "p_mc": 0.0708,
+      "abs_delta": 0.0018
+    },
+    {
+      "n_agents": 64,
+      "p_law": 0.1317,
+      "p_mc": 0.1336,
+      "abs_delta": 0.0019
+    },
+    {
+      "n_agents": 128,
+      "p_law": 0.2268,
+      "p_mc": 0.2243,
+      "abs_delta": 0.0025
+    },
+    {
+      "n_agents": 256,
+      "p_law": 0.3614,
+      "p_mc": 0.3562,
+      "abs_delta": 0.0051
+    },
+    {
+      "n_agents": 512,
+      "p_law": 0.5175,
+      "p_mc": 0.5138,
+      "abs_delta": 0.0037
+    },
+    {
+      "n_agents": 900,
+      "p_law": 0.6298,
+      "p_mc": 0.6251,
+      "abs_delta": 0.0046
+    }
+  ],
+  "plane_vs_volume": {
+    "sigma_over_r": 4.6,
+    "target_p": 0.5,
+    "n_planar": 30.8,
+    "n_volumetric": 465.8,
+    "ratio": 15.1
+  },
+  "exponent_note": "Exactly 3 by construction: rho scales as (N/eta3)^(1/3), so inverting at fixed p gives a cubic dependence identically. Not measured here, because fitting it back from the closed form would be circular.",
+  "checks": [
+    {
+      "label": "law vs MC, worst |delta|",
+      "reproduced": 0.0051,
+      "published": 0.005,
+      "abs_delta": 0.00010000000000000026,
+      "tolerance": 0.004,
+      "pass": true
+    },
+    {
+      "label": "volumetric ceiling",
+      "reproduced": 0.7404804896930611,
+      "published": 0.7405,
+      "abs_delta": 1.9510306938919086e-05,
+      "tolerance": 0.0001,
+      "pass": true
+    },
+    {
+      "label": "planar mesh at p=0.5",
+      "reproduced": 30.76022870703409,
+      "published": 31.0,
+      "abs_delta": 0.2397712929659086,
+      "tolerance": 1.0,
+      "pass": true
+    },
+    {
+      "label": "volumetric mesh at p=0.5",
+      "reproduced": 465.75131665485105,
+      "published": 473.0,
+      "abs_delta": 7.248683345148947,
+      "tolerance": 12.0,
+      "pass": true
+    },
+    {
+      "label": "volumetric/planar ratio",
+      "reproduced": 15.141347650264558,
+      "published": 15.0,
+      "abs_delta": 0.1413476502645583,
+      "tolerance": 1.0,
+      "pass": true
+    }
+  ],
+  "all_checks_pass": true
+}

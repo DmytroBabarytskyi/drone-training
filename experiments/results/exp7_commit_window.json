@@ -1,0 +1,551 @@
+{
+  "experiment": "exp7_commit_window",
+  "description": "Table VI / Figure 4 - the commit-time window and the static alternative",
+  "seed": 20260307,
+  "elapsed_s": 0.18,
+  "environment": {
+    "python": "3.11.9",
+    "numpy": "2.4.4",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "git_commit": "290043a7a00f53d1329da15604a99e57ea85beea",
+  "git_dirty": true,
+  "parameters": {
+    "sensor_noise_std_m": 4.0,
+    "track_duration_s": 30.0,
+    "track_rate_hz": 2.5,
+    "r_m": 6.0,
+    "v_max_mps": 33.0,
+    "accel_mps2": 27.0,
+    "target_p": 0.8,
+    "corridor_m": 60.0,
+    "manoeuvre_g": 0.5,
+    "eta2": 0.9068996821171089
+  },
+  "budget_sweep": [
+    {
+      "T_s": 1.0,
+      "sigma_sensor_m": 0.957,
+      "sigma_manoeuvre_m": 2.45,
+      "sigma_total_m": 2.633,
+      "n_needed": 0.75,
+      "formation_half_extent_m": 5.44,
+      "required_transit_worst_m": 92.55,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 6.75,
+      "feasible_worst": false,
+      "feasible_optimistic": false
+    },
+    {
+      "T_s": 1.5,
+      "sigma_sensor_m": 0.98,
+      "sigma_manoeuvre_m": 5.52,
+      "sigma_total_m": 5.604,
+      "n_needed": 3.38,
+      "formation_half_extent_m": 11.59,
+      "required_transit_worst_m": 101.24,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 15.19,
+      "feasible_worst": false,
+      "feasible_optimistic": false
+    },
+    {
+      "T_s": 2.0,
+      "sigma_sensor_m": 1.003,
+      "sigma_manoeuvre_m": 9.81,
+      "sigma_total_m": 9.861,
+      "n_needed": 10.48,
+      "formation_half_extent_m": 20.39,
+      "required_transit_worst_m": 113.69,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 27.0,
+      "feasible_worst": false,
+      "feasible_optimistic": false
+    },
+    {
+      "T_s": 2.5,
+      "sigma_sensor_m": 1.027,
+      "sigma_manoeuvre_m": 15.33,
+      "sigma_total_m": 15.362,
+      "n_needed": 25.42,
+      "formation_half_extent_m": 31.77,
+      "required_transit_worst_m": 129.78,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 42.17,
+      "feasible_worst": false,
+      "feasible_optimistic": false
+    },
+    {
+      "T_s": 3.0,
+      "sigma_sensor_m": 1.05,
+      "sigma_manoeuvre_m": 22.07,
+      "sigma_total_m": 22.097,
+      "n_needed": 52.6,
+      "formation_half_extent_m": 45.7,
+      "required_transit_worst_m": 149.48,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 58.67,
+      "feasible_worst": false,
+      "feasible_optimistic": false
+    },
+    {
+      "T_s": 3.5,
+      "sigma_sensor_m": 1.074,
+      "sigma_manoeuvre_m": 30.04,
+      "sigma_total_m": 30.062,
+      "n_needed": 97.36,
+      "formation_half_extent_m": 62.17,
+      "required_transit_worst_m": 172.77,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 75.17,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 4.0,
+      "sigma_sensor_m": 1.098,
+      "sigma_manoeuvre_m": 39.24,
+      "sigma_total_m": 39.255,
+      "n_needed": 166.0,
+      "formation_half_extent_m": 81.18,
+      "required_transit_worst_m": 199.65,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 91.67,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 4.5,
+      "sigma_sensor_m": 1.121,
+      "sigma_manoeuvre_m": 49.66,
+      "sigma_total_m": 49.676,
+      "n_needed": 265.84,
+      "formation_half_extent_m": 102.73,
+      "required_transit_worst_m": 230.13,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 108.17,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 5.0,
+      "sigma_sensor_m": 1.145,
+      "sigma_manoeuvre_m": 61.31,
+      "sigma_total_m": 61.323,
+      "n_needed": 405.11,
+      "formation_half_extent_m": 126.81,
+      "required_transit_worst_m": 264.19,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 124.67,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 5.5,
+      "sigma_sensor_m": 1.169,
+      "sigma_manoeuvre_m": 74.19,
+      "sigma_total_m": 74.197,
+      "n_needed": 593.06,
+      "formation_half_extent_m": 153.43,
+      "required_transit_worst_m": 301.84,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 141.17,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 6.0,
+      "sigma_sensor_m": 1.194,
+      "sigma_manoeuvre_m": 88.29,
+      "sigma_total_m": 88.298,
+      "n_needed": 839.9,
+      "formation_half_extent_m": 182.59,
+      "required_transit_worst_m": 343.08,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 157.67,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 6.5,
+      "sigma_sensor_m": 1.218,
+      "sigma_manoeuvre_m": 103.62,
+      "sigma_total_m": 103.625,
+      "n_needed": 1156.79,
+      "formation_half_extent_m": 214.29,
+      "required_transit_worst_m": 387.9,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 174.17,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 7.0,
+      "sigma_sensor_m": 1.242,
+      "sigma_manoeuvre_m": 120.17,
+      "sigma_total_m": 120.179,
+      "n_needed": 1555.89,
+      "formation_half_extent_m": 248.52,
+      "required_transit_worst_m": 436.31,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 190.67,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 7.5,
+      "sigma_sensor_m": 1.267,
+      "sigma_manoeuvre_m": 137.95,
+      "sigma_total_m": 137.959,
+      "n_needed": 2050.33,
+      "formation_half_extent_m": 285.29,
+      "required_transit_worst_m": 488.31,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 207.17,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 8.0,
+      "sigma_sensor_m": 1.291,
+      "sigma_manoeuvre_m": 156.96,
+      "sigma_total_m": 156.965,
+      "n_needed": 2654.18,
+      "formation_half_extent_m": 324.59,
+      "required_transit_worst_m": 543.89,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 223.67,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 8.5,
+      "sigma_sensor_m": 1.316,
+      "sigma_manoeuvre_m": 177.19,
+      "sigma_total_m": 177.198,
+      "n_needed": 3382.52,
+      "formation_half_extent_m": 366.43,
+      "required_transit_worst_m": 603.06,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 240.17,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 9.0,
+      "sigma_sensor_m": 1.34,
+      "sigma_manoeuvre_m": 198.65,
+      "sigma_total_m": 198.657,
+      "n_needed": 4251.39,
+      "formation_half_extent_m": 410.81,
+      "required_transit_worst_m": 665.82,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 256.67,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 9.5,
+      "sigma_sensor_m": 1.365,
+      "sigma_manoeuvre_m": 221.34,
+      "sigma_total_m": 221.342,
+      "n_needed": 5277.79,
+      "formation_half_extent_m": 457.72,
+      "required_transit_worst_m": 732.16,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 273.17,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 10.0,
+      "sigma_sensor_m": 1.389,
+      "sigma_manoeuvre_m": 245.25,
+      "sigma_total_m": 245.254,
+      "n_needed": 6479.7,
+      "formation_half_extent_m": 507.16,
+      "required_transit_worst_m": 802.09,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 289.67,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 10.5,
+      "sigma_sensor_m": 1.414,
+      "sigma_manoeuvre_m": 270.39,
+      "sigma_total_m": 270.392,
+      "n_needed": 7876.08,
+      "formation_half_extent_m": 559.15,
+      "required_transit_worst_m": 875.61,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 306.17,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 11.0,
+      "sigma_sensor_m": 1.439,
+      "sigma_manoeuvre_m": 296.75,
+      "sigma_total_m": 296.756,
+      "n_needed": 9486.85,
+      "formation_half_extent_m": 613.67,
+      "required_transit_worst_m": 952.71,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 322.67,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 11.5,
+      "sigma_sensor_m": 1.464,
+      "sigma_manoeuvre_m": 324.34,
+      "sigma_total_m": 324.346,
+      "n_needed": 11332.91,
+      "formation_half_extent_m": 670.72,
+      "required_transit_worst_m": 1033.4,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 339.17,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 12.0,
+      "sigma_sensor_m": 1.489,
+      "sigma_manoeuvre_m": 353.16,
+      "sigma_total_m": 353.163,
+      "n_needed": 13436.12,
+      "formation_half_extent_m": 730.31,
+      "required_transit_worst_m": 1117.67,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 355.67,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 12.5,
+      "sigma_sensor_m": 1.514,
+      "sigma_manoeuvre_m": 383.2,
+      "sigma_total_m": 383.206,
+      "n_needed": 15819.32,
+      "formation_half_extent_m": 792.44,
+      "required_transit_worst_m": 1205.53,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 372.17,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 13.0,
+      "sigma_sensor_m": 1.539,
+      "sigma_manoeuvre_m": 414.47,
+      "sigma_total_m": 414.475,
+      "n_needed": 18506.34,
+      "formation_half_extent_m": 857.1,
+      "required_transit_worst_m": 1296.98,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 388.67,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 13.5,
+      "sigma_sensor_m": 1.564,
+      "sigma_manoeuvre_m": 446.97,
+      "sigma_total_m": 446.971,
+      "n_needed": 21521.94,
+      "formation_half_extent_m": 924.3,
+      "required_transit_worst_m": 1392.01,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 405.17,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    },
+    {
+      "T_s": 14.0,
+      "sigma_sensor_m": 1.589,
+      "sigma_manoeuvre_m": 480.69,
+      "sigma_total_m": 480.693,
+      "n_needed": 24891.9,
+      "formation_half_extent_m": 994.03,
+      "required_transit_worst_m": 1490.63,
+      "required_transit_optimistic_m": 60.0,
+      "reach_m": 421.67,
+      "feasible_worst": false,
+      "feasible_optimistic": true
+    }
+  ],
+  "headline": {
+    "sensor_range_m": [
+      0.957,
+      1.589
+    ],
+    "manoeuvre_range_m": [
+      2.45,
+      480.69
+    ],
+    "worst_bound_feasible": false,
+    "closest_shortfall_m": 85.8,
+    "closest_T_s": 1.0,
+    "optimistic_cheapest_n": 97.36,
+    "blanket_cost_agents": 80.0,
+    "corridor_capacity_discs": 73,
+    "corridor_capacity_asymptotic": 90.7,
+    "static_coverage_cap": 0.73
+  },
+  "table6": [
+    {
+      "corridor_m": 15.0,
+      "g0.1": 1.13,
+      "g0.5": null,
+      "g1.0": null,
+      "g3.0": null
+    },
+    {
+      "corridor_m": 25.0,
+      "g0.1": 2.22,
+      "g0.5": null,
+      "g1.0": null,
+      "g3.0": null
+    },
+    {
+      "corridor_m": 40.0,
+      "g0.1": 4.01,
+      "g0.5": null,
+      "g1.0": null,
+      "g3.0": null
+    },
+    {
+      "corridor_m": 60.0,
+      "g0.1": 16.34,
+      "g0.5": null,
+      "g1.0": null,
+      "g3.0": null
+    },
+    {
+      "corridor_m": 90.0,
+      "g0.1": 106.34,
+      "g0.5": null,
+      "g1.0": null,
+      "g3.0": null
+    }
+  ],
+  "reported_not_asserted": {
+    "sensor_term_range_m": {
+      "reproduced": [
+        0.957,
+        1.589
+      ],
+      "published": [
+        0.9,
+        2.5
+      ]
+    },
+    "closest_approach_T_s": {
+      "reproduced": 1.0,
+      "published": 1.5
+    },
+    "orders_of_magnitude_gap": 2.48
+  },
+  "grid_sensitive_table6_rows": {
+    "C15_at_0.1g": {
+      "reproduced": 1.13,
+      "published": 0.8,
+      "grid_sensitive": true
+    },
+    "C25_at_0.1g": {
+      "reproduced": 2.22,
+      "published": 1.6,
+      "grid_sensitive": true
+    },
+    "C90_at_0.1g": {
+      "reproduced": 106.34,
+      "published": 93.7,
+      "grid_sensitive": true
+    }
+  },
+  "commit_time_step_s": 0.5,
+  "checks": [
+    {
+      "label": "manoeuvre term, min",
+      "reproduced": 2.45,
+      "published": 2.5,
+      "abs_delta": 0.04999999999999982,
+      "tolerance": 0.6,
+      "pass": true
+    },
+    {
+      "label": "manoeuvre term, max",
+      "reproduced": 480.69,
+      "published": 481.0,
+      "abs_delta": 0.3100000000000023,
+      "tolerance": 12.0,
+      "pass": true
+    },
+    {
+      "label": "closest-approach shortfall",
+      "reproduced": 85.8,
+      "published": 86.0,
+      "abs_delta": 0.20000000000000284,
+      "tolerance": 6.0,
+      "pass": true
+    },
+    {
+      "label": "optimistic-bound cheapest mesh",
+      "reproduced": 97.36,
+      "published": 97.0,
+      "abs_delta": 0.35999999999999943,
+      "tolerance": 8.0,
+      "pass": true
+    },
+    {
+      "label": "blanket cost",
+      "reproduced": 80.0,
+      "published": 80.0,
+      "abs_delta": 0.0,
+      "tolerance": 1.0,
+      "pass": true
+    },
+    {
+      "label": "corridor capacity",
+      "reproduced": 73.0,
+      "published": 73.0,
+      "abs_delta": 0.0,
+      "tolerance": 2.0,
+      "pass": true
+    },
+    {
+      "label": "static coverage cap",
+      "reproduced": 0.73,
+      "published": 0.73,
+      "abs_delta": 0.0,
+      "tolerance": 0.02,
+      "pass": true
+    },
+    {
+      "label": "window empty at >= 0.5g",
+      "reproduced": 1.0,
+      "published": 1.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.0,
+      "pass": true
+    },
+    {
+      "label": "C=40 at 0.1g",
+      "reproduced": 4.01,
+      "published": 4.0,
+      "abs_delta": 0.009999999999999787,
+      "tolerance": 2.5,
+      "pass": true
+    },
+    {
+      "label": "C=60 at 0.1g",
+      "reproduced": 16.34,
+      "published": 16.4,
+      "abs_delta": 0.05999999999999872,
+      "tolerance": 2.5,
+      "pass": true
+    }
+  ],
+  "all_checks_pass": true
+}

@@ -1,0 +1,300 @@
+{
+  "experiment": "exp5_placement_strategies",
+  "description": "Table IV / Figure 5 - coverage by placement strategy at matched budget",
+  "seed": 20260305,
+  "elapsed_s": 67.97,
+  "environment": {
+    "python": "3.11.9",
+    "numpy": "2.4.4",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "git_commit": "290043a7a00f53d1329da15604a99e57ea85beea",
+  "git_dirty": true,
+  "parameters": {
+    "sigma_m": 9.25,
+    "r_m": 2.0,
+    "spacing_m": 4.0,
+    "trials_per_cell": 200000,
+    "budgets": [
+      9,
+      25,
+      60,
+      130
+    ]
+  },
+  "coverage": {
+    "hexagonal": {
+      "9": 0.185475,
+      "25": 0.42197,
+      "60": 0.711785,
+      "130": 0.87376
+    },
+    "fermat_spiral": {
+      "9": 0.17815,
+      "25": 0.403685,
+      "60": 0.669495,
+      "130": 0.8209
+    },
+    "square_lattice": {
+      "9": 0.185225,
+      "25": 0.40833,
+      "60": 0.6515,
+      "130": 0.76833
+    },
+    "lloyd_cvt": {
+      "9": 0.09406,
+      "25": 0.21878,
+      "60": 0.508205,
+      "130": 0.852075
+    },
+    "random_nonoverlapping": {
+      "9": 0.17514,
+      "25": 0.33923,
+      "60": 0.48046,
+      "130": 0.52389
+    }
+  },
+  "relative_to_hexagonal": {
+    "hexagonal": {
+      "9": 1.0,
+      "25": 1.0,
+      "60": 1.0,
+      "130": 1.0
+    },
+    "fermat_spiral": {
+      "9": 0.961,
+      "25": 0.957,
+      "60": 0.941,
+      "130": 0.94
+    },
+    "square_lattice": {
+      "9": 0.999,
+      "25": 0.968,
+      "60": 0.915,
+      "130": 0.879
+    },
+    "lloyd_cvt": {
+      "9": 0.507,
+      "25": 0.518,
+      "60": 0.714,
+      "130": 0.975
+    },
+    "random_nonoverlapping": {
+      "9": 0.944,
+      "25": 0.804,
+      "60": 0.675,
+      "130": 0.6
+    }
+  },
+  "nearest_neighbour_spacing_m": {
+    "hexagonal": {
+      "9": 4.0,
+      "25": 4.0,
+      "60": 4.0,
+      "130": 4.0
+    },
+    "fermat_spiral": {
+      "9": 3.49,
+      "25": 3.53,
+      "60": 3.55,
+      "130": 3.54
+    },
+    "square_lattice": {
+      "9": 4.0,
+      "25": 4.0,
+      "60": 4.0,
+      "130": 4.0
+    },
+    "lloyd_cvt": {
+      "9": 10.9,
+      "25": 7.83,
+      "60": 5.56,
+      "130": 3.97
+    },
+    "random_nonoverlapping": {
+      "9": 4.45,
+      "25": 4.37,
+      "60": 4.39,
+      "130": 4.25
+    }
+  },
+  "cvt_spacing_budget_matched_to_paper": 60,
+  "construction_dependent_rows": {
+    "random_nonoverlapping_N9": {
+      "reproduced": 0.175,
+      "published": 0.153,
+      "construction_dependent": true
+    },
+    "random_nonoverlapping_N25": {
+      "reproduced": 0.339,
+      "published": 0.327,
+      "construction_dependent": true
+    },
+    "random_nonoverlapping_N60": {
+      "reproduced": 0.48,
+      "published": 0.52,
+      "construction_dependent": true
+    },
+    "random_nonoverlapping_N130": {
+      "reproduced": 0.524,
+      "published": 0.655,
+      "construction_dependent": true
+    }
+  },
+  "random_below_every_lattice": true,
+  "checks": [
+    {
+      "label": "hexagonal at N=9",
+      "reproduced": 0.185475,
+      "published": 0.185,
+      "abs_delta": 0.0004750000000000032,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "hexagonal at N=25",
+      "reproduced": 0.42197,
+      "published": 0.422,
+      "abs_delta": 2.999999999997449e-05,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "hexagonal at N=60",
+      "reproduced": 0.711785,
+      "published": 0.711,
+      "abs_delta": 0.0007850000000000357,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "hexagonal at N=130",
+      "reproduced": 0.87376,
+      "published": 0.873,
+      "abs_delta": 0.0007599999999999829,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "fermat_spiral at N=9",
+      "reproduced": 0.17815,
+      "published": 0.171,
+      "abs_delta": 0.00714999999999999,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "fermat_spiral at N=25",
+      "reproduced": 0.403685,
+      "published": 0.401,
+      "abs_delta": 0.002684999999999993,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "fermat_spiral at N=60",
+      "reproduced": 0.669495,
+      "published": 0.676,
+      "abs_delta": 0.006505000000000094,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "fermat_spiral at N=130",
+      "reproduced": 0.8209,
+      "published": 0.831,
+      "abs_delta": 0.010099999999999998,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "square_lattice at N=9",
+      "reproduced": 0.185225,
+      "published": 0.185,
+      "abs_delta": 0.00022500000000000298,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "square_lattice at N=25",
+      "reproduced": 0.40833,
+      "published": 0.409,
+      "abs_delta": 0.0006699999999999484,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "square_lattice at N=60",
+      "reproduced": 0.6515,
+      "published": 0.651,
+      "abs_delta": 0.0004999999999999449,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "square_lattice at N=130",
+      "reproduced": 0.76833,
+      "published": 0.767,
+      "abs_delta": 0.0013299999999999423,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "lloyd_cvt at N=9",
+      "reproduced": 0.09406,
+      "published": 0.091,
+      "abs_delta": 0.003060000000000007,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "lloyd_cvt at N=25",
+      "reproduced": 0.21878,
+      "published": 0.222,
+      "abs_delta": 0.0032200000000000006,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "lloyd_cvt at N=60",
+      "reproduced": 0.508205,
+      "published": 0.532,
+      "abs_delta": 0.02379500000000001,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "lloyd_cvt at N=130",
+      "reproduced": 0.852075,
+      "published": 0.839,
+      "abs_delta": 0.013075000000000059,
+      "tolerance": 0.03,
+      "pass": true
+    },
+    {
+      "label": "hexagonal best at every budget",
+      "reproduced": 1.0,
+      "published": 1.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.0,
+      "pass": true
+    },
+    {
+      "label": "CVT spacing (N=60)",
+      "reproduced": 5.562764374018944,
+      "published": 5.34,
+      "abs_delta": 0.22276437401894444,
+      "tolerance": 0.6,
+      "pass": true
+    },
+    {
+      "label": "packed spacing at N=25",
+      "reproduced": 4.0,
+      "published": 4.0,
+      "abs_delta": 0.0,
+      "tolerance": 0.1,
+      "pass": true
+    }
+  ],
+  "all_checks_pass": true
+}
