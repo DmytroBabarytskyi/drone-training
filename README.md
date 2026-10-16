@@ -181,10 +181,13 @@ through pygame/SDL, configuration through OmegaConf, and tests through pytest.
 
 ## The preprint's experiments
 
-The analysis in *Feasibility Ceilings Before Learning: Sizing and Timing Bounds
-for Drone-Mesh Interception* is reproduced end to end by the scripts in
+**Feasibility Ceilings Before Learning: Sizing and Timing Bounds for
+Drone-Mesh Interception** — [arXiv:2610.20823](https://arxiv.org/abs/2610.20823)
+([PDF](https://arxiv.org/pdf/2610.20823)), cs.RO / cs.LG / cs.MA, CC BY 4.0.
+
+The paper's analysis is reproduced end to end by the scripts in
 [`experiments/`](experiments/). A single entry point regenerates every number
-and every figure in the paper:
+and every figure in it:
 
 ```bash
 python experiments/run_all.py
@@ -235,6 +238,21 @@ manuscript does not record the grid or construction they depend on — the
 fitted exponent of Section V-B, the random-placement row of Table IV, and the
 narrow and wide corridors of Table VI. Those are printed as "reported, not
 asserted" and carried in the JSON records with both values side by side.
+
+The commit the paper cites is `4924613`; later commits may refine the code,
+but that one is what produced the published numbers and figures.
+
+```bibtex
+@misc{babarytskyi2026feasibility,
+  title         = {Feasibility Ceilings Before Learning: Sizing and Timing
+                   Bounds for Drone-Mesh Interception},
+  author        = {Babarytskyi, Dmytro},
+  year          = {2026},
+  eprint        = {2610.20823},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO}
+}
+```
 
 ---
 
